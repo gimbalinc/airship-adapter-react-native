@@ -9,12 +9,14 @@ const LINKING_ERROR =
 // @ts-expect-error
 const isTurboModuleEnabled = global.__turboModuleProxy != null;
 
-const RtnGimbalAirshipAdapterModule = isTurboModuleEnabled
-  ? require('./NativeRtnGimbalAirshipAdapter').default
+import type { Spec as GimbalAirshipAdapterSpec } from './NativeGimbalAirshipAdapter';
+
+const GimbalAirshipAdapterModule = isTurboModuleEnabled
+  ? require('./NativeGimbalAirshipAdapter').default
   : NativeModules.RtnGimbalAirshipAdapter;
 
-const RtnGimbalAirshipAdapter = RtnGimbalAirshipAdapterModule
-  ? RtnGimbalAirshipAdapterModule
+export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = GimbalAirshipAdapterModule
+  ? GimbalAirshipAdapterModule
   : new Proxy(
       {},
       {
@@ -23,7 +25,3 @@ const RtnGimbalAirshipAdapter = RtnGimbalAirshipAdapterModule
         },
       }
     );
-
-export function multiply(a: number, b: number): Promise<number> {
-  return RtnGimbalAirshipAdapter.multiply(a, b);
-}
