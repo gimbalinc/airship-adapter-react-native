@@ -15,13 +15,14 @@ const GimbalAirshipAdapterModule = isTurboModuleEnabled
   ? require('./NativeGimbalAirshipAdapter').default
   : NativeModules.RtnGimbalAirshipAdapter;
 
-export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = GimbalAirshipAdapterModule
-  ? GimbalAirshipAdapterModule
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec =
+  GimbalAirshipAdapterModule
+    ? GimbalAirshipAdapterModule
+    : new Proxy(
+        {},
+        {
+          get() {
+            throw new Error(LINKING_ERROR);
+          },
+        }
+      );
