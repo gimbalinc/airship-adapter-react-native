@@ -13,5 +13,7 @@ export interface Spec extends TurboModule {
   setUserConsent(consentType: Int32, state: Int32): void;
   getUserConsent(consentType: Int32): Promise<Int32>;
 }
-  
-export default TurboModuleRegistry.getEnforcing<Spec>('RtnGimbalAirshipAdapter');
+
+export default TurboModuleRegistry.getEnforcing<Spec>(
+  'RtnGimbalAirshipAdapter'
+);

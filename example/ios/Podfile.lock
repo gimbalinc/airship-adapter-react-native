@@ -1,4 +1,19 @@
 PODS:
+  - Airship (16.2.0):
+    - Airship/Automation (= 16.2.0)
+    - Airship/Basement (= 16.2.0)
+    - Airship/Core (= 16.2.0)
+    - Airship/ExtendedActions (= 16.2.0)
+    - Airship/MessageCenter (= 16.2.0)
+  - Airship/Automation (16.2.0):
+    - Airship/Core
+  - Airship/Basement (16.2.0)
+  - Airship/Core (16.2.0):
+    - Airship/Basement
+  - Airship/ExtendedActions (16.2.0):
+    - Airship/Core
+  - Airship/MessageCenter (16.2.0):
+    - Airship/Core
   - boost (1.76.0)
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
@@ -72,6 +87,7 @@ PODS:
     - FlipperKit/Core
     - FlipperKit/FlipperKitNetworkPlugin
   - fmt (6.2.1)
+  - Gimbal (2.93)
   - glog (0.3.5)
   - hermes-engine (0.70.6)
   - libevent (2.1.12)
@@ -302,6 +318,8 @@ PODS:
   - React-jsinspector (0.70.6)
   - React-logger (0.70.6):
     - glog
+  - react-native-safe-area-context (0.7.3):
+    - React
   - React-perflogger (0.70.6)
   - React-RCTActionSheet (0.70.6):
     - React-Core/RCTActionSheetHeaders (= 0.70.6)
@@ -368,9 +386,22 @@ PODS:
     - React-jsi (= 0.70.6)
     - React-logger (= 0.70.6)
     - React-perflogger (= 0.70.6)
+  - RNCMaskedView (0.1.11):
+    - React
+  - RNGestureHandler (1.10.3):
+    - React-Core
+  - RNReanimated (1.13.4):
+    - React-Core
+  - RNScreens (2.18.1):
+    - React-Core
   - rtn-gimbal-airship-adapter (0.1.0):
+    - Airship
+    - Gimbal
     - React-Core
   - SocketRocket (0.6.0)
+  - urbanairship-react-native (13.2.1):
+    - Airship (= 16.2.0)
+    - React-Core
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -422,6 +453,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -434,11 +466,17 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNReanimated (from `../node_modules/react-native-reanimated`)
+  - RNScreens (from `../node_modules/react-native-screens`)
   - rtn-gimbal-airship-adapter (from `../..`)
+  - urbanairship-react-native (from `../node_modules/urbanairship-react-native`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
+    - Airship
     - CocoaAsyncSocket
     - Flipper
     - Flipper-Boost-iOSX
@@ -450,6 +488,7 @@ SPEC REPOS:
     - Flipper-RSocket
     - FlipperKit
     - fmt
+    - Gimbal
     - libevent
     - OpenSSL-Universal
     - SocketRocket
@@ -498,6 +537,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-safe-area-context:
+    :path: "../node_modules/react-native-safe-area-context"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -522,12 +563,23 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNCMaskedView:
+    :path: "../node_modules/@react-native-community/masked-view"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
+  RNReanimated:
+    :path: "../node_modules/react-native-reanimated"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
   rtn-gimbal-airship-adapter:
     :path: "../.."
+  urbanairship-react-native:
+    :path: "../node_modules/urbanairship-react-native"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  Airship: 57df0122b4684cdbdc1cac6171f7065697e54155
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
@@ -543,6 +595,7 @@ SPEC CHECKSUMS:
   Flipper-RSocket: d9d9ade67cbecf6ac10730304bf5607266dd2541
   FlipperKit: cbdee19bdd4e7f05472a66ce290f1b729ba3cb86
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
+  Gimbal: f199f5ffd4e02ce05792e3c7f61f0f2a8cb2ebf9
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: 2af7b7a59128f250adfd86f15aa1d5a2ecd39995
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
@@ -562,6 +615,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: b4a65947391c658450151275aa406f2b8263178f
   React-jsinspector: 60769e5a0a6d4b32294a2456077f59d0266f9a8b
   React-logger: 1623c216abaa88974afce404dc8f479406bbc3a0
+  react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
   React-perflogger: 8c79399b0500a30ee8152d0f9f11beae7fc36595
   React-RCTActionSheet: 7316773acabb374642b926c19aef1c115df5c466
   React-RCTAnimation: 5341e288375451297057391227f691d9b2326c3d
@@ -574,8 +628,13 @@ SPEC CHECKSUMS:
   React-RCTVibration: c75ceef7aa60a33b2d5731ebe5800ddde40cefc4
   React-runtimeexecutor: 15437b576139df27635400de0599d9844f1ab817
   ReactCommon: 349be31adeecffc7986a0de875d7fb0dcf4e251c
-  rtn-gimbal-airship-adapter: 969ec6019f929f6f356afdb2bcd4ae52dab9ee92
+  RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
+  RNReanimated: c1b56d030d1616239861534d9adb531f8cffab68
+  RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
+  rtn-gimbal-airship-adapter: 5328639439143ce198ad95af852834dd6b80f5d5
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
+  urbanairship-react-native: 1703817a61fcfc30c01371e63841a80b99564a76
   Yoga: 99caf8d5ab45e9d637ee6e0174ec16fbbb01bcfc
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

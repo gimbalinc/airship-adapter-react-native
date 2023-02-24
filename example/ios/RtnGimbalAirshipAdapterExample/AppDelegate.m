@@ -6,6 +6,14 @@
 
 #import <React/RCTAppSetupUtils.h>
 
+#import <Gimbal/Gimbal.h>
+
+#if __has_include("AirshipLib.h")
+#import "AirshipLib.h"
+#else
+@import AirshipKit;
+#endif
+
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
 #import <React/RCTCxxBridgeDelegate.h>
@@ -18,12 +26,16 @@
 
 static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
-@interface AppDelegate () <RCTCxxBridgeDelegate, RCTTurboModuleManagerDelegate> {
+@interface AppDelegate () <RCTCxxBridgeDelegate, RCTTurboModuleManagerDelegate, UNUserNotificationCenterDelegate> {
   RCTTurboModuleManager *_turboModuleManager;
   RCTSurfacePresenterBridgeAdapter *_bridgeAdapter;
   std::shared_ptr<const facebook::react::ReactNativeConfig> _reactNativeConfig;
   facebook::react::ContextContainer::Shared _contextContainer;
 }
+@end
+#else
+@interface AppDelegate ()<UNUserNotificationCenterDelegate>
+
 @end
 #endif
 
@@ -43,6 +55,10 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   bridge.surfacePresenter = _bridgeAdapter.surfacePresenter;
 #endif
   
+  [UAirship takeOff:nil launchOptions:launchOptions];
+  UAirship.push.userPushNotificationsEnabled = true;
+  UAirship.push.defaultPresentationOptions = UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound;
+  
   NSDictionary *initProps = [self prepareInitialProps];
   UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"RtnGimbalAirshipAdapterExample", initProps);
 
@@ -57,7 +73,36 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  [self registerForNotifications:application];
+  
   return YES;
+}
+
+- (void)registerForNotifications:(UIApplication *)application
+{
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
+    
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert)
+                          completionHandler:^(BOOL granted, NSError * _Nullable error)
+     {
+         if(error){
+             NSLog(@"Error registering for UserNotifications %@", error);
+         } else {
+             NSLog(@"Registered for UserNotifications");
+         }
+     }];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [Gimbal setPushDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"Registration for remote notifications failed with error %@", error.description);
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

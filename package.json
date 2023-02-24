@@ -78,7 +78,8 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "urbanairship-react-native": ">=7.0.0"
   },
   "engines": {
     "node": ">= 16.0.0"
