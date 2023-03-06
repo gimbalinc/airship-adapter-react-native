@@ -34,8 +34,8 @@ public class RtnGimbalAirshipAdapterPackage extends TurboReactPackage {
                       RtnGimbalAirshipAdapterModule.NAME,
                       RtnGimbalAirshipAdapterModule.NAME,
                       false, // canOverrideExistingModule
-                      false, // needsEagerInit
-                      true, // hasConstants
+                      true, // needsEagerInit
+                      false, // hasConstants
                       false, // isCxxModule
                       isTurboModule // isTurboModule
       ));
