@@ -5,7 +5,7 @@
  */
 'use strict';
 
-import { UrbanAirship, EventType } from 'urbanairship-react-native';
+// import { UrbanAirship, EventType } from 'urbanairship-react-native';
 
 import {
   GimbalAirshipAdapter,
@@ -136,16 +136,16 @@ export default class AirshipSample extends Component<AppProps, AppState> {
       this.setState({ placesConsent: consent });
     });
 
-    UrbanAirship.getChannelId().then((channelId) => {
-      console.log(`channelId: ${channelId}`);
-      this.setState({ channelId });
-    });
+    // UrbanAirship.getChannelId().then((channelId) => {
+    //   console.log(`channelId: ${channelId}`);
+    //   this.setState({ channelId });
+    // });
 
-    UrbanAirship.addListener(EventType.Registration, (event) => {
-      console.log('registration:', JSON.stringify(event));
-      this.setState({ channelId: event.channelId });
-      this.setState(this.state);
-    });
+    // UrbanAirship.addListener(EventType.Registration, (event) => {
+    //   console.log('registration:', JSON.stringify(event));
+    //   this.setState({ channelId: event.channelId });
+    //   this.setState(this.state);
+    // });
 
     GimbalAirshipAdapter.addListener(RegionEventType.Enter, (event) => {
       console.log('region enter:', JSON.stringify(event));

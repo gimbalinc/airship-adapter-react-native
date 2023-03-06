@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
     <key>developmentAppKey</key>
-    <string>YOUR_DEVELOPMENT_KEY</string>
+    <string>CWEYq7EbRGW051Lwj4U6JQ</string>
     <key>developmentAppSecret</key>
-    <string>YOUR_DEVELOPMENT_SECRET</string>
+    <string>iJg91l4gS7at56xYn7MWAQ</string>
     <key>productionAppKey</key>
-    <string>YOUR_PRODUCTION_KEY</string>
+    <string>CWEYq7EbRGW051Lwj4U6JQ</string>
     <key>productionAppSecret</key>
-    <string>YOUR_PRODUCTION_SECRET</string>
+    <string>iJg91l4gS7at56xYn7MWAQ</string>
 </dict>
 </plist>
 

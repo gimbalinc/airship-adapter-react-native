@@ -1,18 +1,18 @@
 PODS:
-  - Airship (16.2.0):
-    - Airship/Automation (= 16.2.0)
-    - Airship/Basement (= 16.2.0)
-    - Airship/Core (= 16.2.0)
-    - Airship/ExtendedActions (= 16.2.0)
-    - Airship/MessageCenter (= 16.2.0)
-  - Airship/Automation (16.2.0):
+  - Airship (16.10.7):
+    - Airship/Automation (= 16.10.7)
+    - Airship/Basement (= 16.10.7)
+    - Airship/Core (= 16.10.7)
+    - Airship/ExtendedActions (= 16.10.7)
+    - Airship/MessageCenter (= 16.10.7)
+  - Airship/Automation (16.10.7):
     - Airship/Core
-  - Airship/Basement (16.2.0)
-  - Airship/Core (16.2.0):
+  - Airship/Basement (16.10.7)
+  - Airship/Core (16.10.7):
     - Airship/Basement
-  - Airship/ExtendedActions (16.2.0):
+  - Airship/ExtendedActions (16.10.7):
     - Airship/Core
-  - Airship/MessageCenter (16.2.0):
+  - Airship/MessageCenter (16.10.7):
     - Airship/Core
   - boost (1.76.0)
   - CocoaAsyncSocket (7.6.5)
@@ -87,7 +87,10 @@ PODS:
     - FlipperKit/Core
     - FlipperKit/FlipperKitNetworkPlugin
   - fmt (6.2.1)
-  - Gimbal (2.93)
+  - GimbalAirshipAdapter (1.1.1):
+    - Airship (~> 16.10.7)
+    - GimbalXCFramework (~> 2.93)
+  - GimbalXCFramework (2.93)
   - glog (0.3.5)
   - hermes-engine (0.70.6)
   - libevent (2.1.12)
@@ -396,12 +399,10 @@ PODS:
     - React-Core
   - rtn-gimbal-airship-adapter (0.1.0):
     - Airship
-    - Gimbal
+    - GimbalAirshipAdapter (~> 1.1.1)
+    - GimbalXCFramework
     - React-Core
   - SocketRocket (0.6.0)
-  - urbanairship-react-native (13.2.1):
-    - Airship (= 16.2.0)
-    - React-Core
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -471,7 +472,6 @@ DEPENDENCIES:
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - rtn-gimbal-airship-adapter (from `../..`)
-  - urbanairship-react-native (from `../node_modules/urbanairship-react-native`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -488,7 +488,8 @@ SPEC REPOS:
     - Flipper-RSocket
     - FlipperKit
     - fmt
-    - Gimbal
+    - GimbalAirshipAdapter
+    - GimbalXCFramework
     - libevent
     - OpenSSL-Universal
     - SocketRocket
@@ -573,13 +574,11 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   rtn-gimbal-airship-adapter:
     :path: "../.."
-  urbanairship-react-native:
-    :path: "../node_modules/urbanairship-react-native"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Airship: 57df0122b4684cdbdc1cac6171f7065697e54155
+  Airship: fbff646723323c58e3871cd30488612ca373f597
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
@@ -595,7 +594,8 @@ SPEC CHECKSUMS:
   Flipper-RSocket: d9d9ade67cbecf6ac10730304bf5607266dd2541
   FlipperKit: cbdee19bdd4e7f05472a66ce290f1b729ba3cb86
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
-  Gimbal: f199f5ffd4e02ce05792e3c7f61f0f2a8cb2ebf9
+  GimbalAirshipAdapter: e6b4449ad791553ce25286586fa671b5d59cd42d
+  GimbalXCFramework: efa7dd8cbdcb994aeef840d9607ed9f49251e79f
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: 2af7b7a59128f250adfd86f15aa1d5a2ecd39995
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
@@ -632,9 +632,8 @@ SPEC CHECKSUMS:
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNReanimated: c1b56d030d1616239861534d9adb531f8cffab68
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
-  rtn-gimbal-airship-adapter: 5328639439143ce198ad95af852834dd6b80f5d5
+  rtn-gimbal-airship-adapter: e3831272ee1fd2a8d229b78d3d9aaff073073592
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
-  urbanairship-react-native: 1703817a61fcfc30c01371e63841a80b99564a76
   Yoga: 99caf8d5ab45e9d637ee6e0174ec16fbbb01bcfc
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
