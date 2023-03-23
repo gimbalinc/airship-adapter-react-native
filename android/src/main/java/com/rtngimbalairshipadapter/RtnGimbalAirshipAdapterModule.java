@@ -7,8 +7,10 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;
 import com.gimbal.android.PrivacyManager;
 import com.gimbal.android.Visit;
+import com.gimbal.airship.AirshipAdapter;
+import com.urbanairship.analytics.CustomEvent;
 import com.urbanairship.analytics.location.RegionEvent;
-import com.urbanairship.gimbal.GimbalAdapter;
+
 
 public class RtnGimbalAirshipAdapterModule extends com.rtngimbalairshipadapter.RtnGimbalAirshipAdapterSpec {
   public static final String NAME = "RtnGimbalAirshipAdapter";
@@ -28,7 +30,7 @@ public class RtnGimbalAirshipAdapterModule extends com.rtngimbalairshipadapter.R
     super.initialize();
     EventEmitter.shared().attachReactContext(getReactApplicationContext());
 
-    GimbalAdapter.shared(getReactApplicationContext()).addListener(new GimbalAdapter.Listener() {
+    AirshipAdapter.shared(getReactApplicationContext()).addListener(new AirshipAdapter.Listener() {
       @Override
       public void onRegionEntered(@NonNull RegionEvent regionEvent, @NonNull Visit visit) {
         EventEmitter.shared().sendEvent(VisitEvent.enterEvent(visit));
@@ -36,6 +38,16 @@ public class RtnGimbalAirshipAdapterModule extends com.rtngimbalairshipadapter.R
 
       @Override
       public void onRegionExited(@NonNull RegionEvent regionEvent, @NonNull Visit visit) {
+        EventEmitter.shared().sendEvent(VisitEvent.exitEvent(visit));
+      }
+
+      @Override
+      public void onCustomRegionEntry(@NonNull CustomEvent event, @NonNull Visit visit) {
+        EventEmitter.shared().sendEvent(VisitEvent.enterEvent(visit));
+      }
+
+      @Override
+      public void onCustomRegionExit(@NonNull CustomEvent event, @NonNull Visit visit) {
         EventEmitter.shared().sendEvent(VisitEvent.exitEvent(visit));
       }
     });
@@ -73,31 +85,22 @@ public class RtnGimbalAirshipAdapterModule extends com.rtngimbalairshipadapter.R
 
   @ReactMethod
   public void isStarted(Promise promise) {
-    promise.resolve(GimbalAdapter.shared(getReactApplicationContext()).isStarted());
+    promise.resolve(AirshipAdapter.shared(getReactApplicationContext()).isStarted());
   }
 
+
   @ReactMethod
-  public void setGimbalApiKey(String apiKey) {
+  public void start(String apiKey) {
     if (apiKey != null) {
-      GimbalAdapter.shared(getReactApplicationContext()).enableGimbalApiKeyManagement(apiKey);
-    } else {
-      GimbalAdapter.shared(getReactApplicationContext()).disableGimbalApiKeyManagement();
+      AirshipAdapter.shared(getReactApplicationContext()).start(apiKey);
+      AirshipAdapter.shared(getReactApplicationContext()).setShouldTrackCustomExitEvent(true);
+      AirshipAdapter.shared(getReactApplicationContext()).setShouldTrackCustomEntryEvent(true);
     }
   }
 
   @ReactMethod
-  public void start(final Promise promise) {
-    GimbalAdapter.shared(getReactApplicationContext()).startWithPermissionPrompt(new GimbalAdapter.PermissionResultCallback() {
-      @Override
-      public void onResult(boolean started) {
-        promise.resolve(started);
-      }
-    });
-  }
-
-  @ReactMethod
   public void stop() {
-    GimbalAdapter.shared(getReactApplicationContext()).stop();
+    AirshipAdapter.shared(getReactApplicationContext()).stop();
   }
 
   @ReactMethod

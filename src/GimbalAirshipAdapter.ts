@@ -10,16 +10,10 @@ import type { EmitterSubscription } from 'react-native';
 
 export interface Spec {
   /**
-   * Sets the Gimbal API key.
-   * @param apiKey The Gimbal API key.
-   */
-  setGimbalApiKey(apiKey: string): void;
-
-  /**
    * Starts the adapter.
-   * @return A promise with the result.
+   * @param apiKey The Gimbal API key
    */
-  start(): Promise<boolean>;
+  start(apiKey: string): void;
 
   /**
    * Stops the Gimbal Adapter.

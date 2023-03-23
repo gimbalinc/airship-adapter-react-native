@@ -25,8 +25,9 @@ import {
   Switch,
   ScrollView,
 } from 'react-native';
+import Airship from '@ua/react-native-airship';
 
-const GIMBAL_API_KEY = 'f0b43463-fe46-4e69-9527-62ab0be6ad4a';
+const GIMBAL_API_KEY = '2df205db-c93c-4737-a13f-d3e0f601a028';
 
 const styles = StyleSheet.create({
   backgroundContainer: {
@@ -76,8 +77,22 @@ interface AppState {
 export default class AirshipSample extends Component<AppProps, AppState> {
   constructor(props: any) {
     super(props);
+    Airship.takeOff({
+      default: {
+        appSecret: '0_nMsOKaThqqJFYMgHwl-w',
+        appKey: 'wIeVOwjOQAysPP1eQloiaw',
+      },
+      site: 'us', // use "eu" for EU cloud projects
+      urlAllowList: ['*'],
+      android: {
+        notificationConfig: {
+          icon: 'ic_notification',
+          accentColor: '#00ff00',
+        },
+      },
+    });
 
-    GimbalAirshipAdapter.setGimbalApiKey(GIMBAL_API_KEY);
+    GimbalAirshipAdapter.start(GIMBAL_API_KEY);
 
     this.state = {
       channelId: '',
@@ -92,7 +107,8 @@ export default class AirshipSample extends Component<AppProps, AppState> {
 
   handleStartAdapter(enabled: boolean) {
     if (enabled) {
-      GimbalAirshipAdapter.start().then((isStarted: boolean) => {
+      GimbalAirshipAdapter.start(GIMBAL_API_KEY);
+      GimbalAirshipAdapter.isStarted().then((isStarted) => {
         this.setState({ isStarted });
       });
     } else {

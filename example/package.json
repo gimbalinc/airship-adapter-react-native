@@ -9,11 +9,14 @@
     "pods": "pod-install --quiet"
   },
   "dependencies": {
+    "@react-native-community/cli": "^10.2.0",
     "@react-native-community/masked-view": "^0.1.7",
+    "@ua/react-native-airship": "^15.2.0",
     "moment": "^2.24.0",
-    "react": "18.1.0",
-    "react-native": "0.70.6",
+    "react": "18.2.0",
+    "react-native": "0.71.4",
     "react-native-gesture-handler": "^1.6.1",
+    "react-native-gradle-plugin": "^0.71.16",
     "react-native-reanimated": "^1.7.1",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.4.0",
@@ -24,8 +27,8 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@babel/preset-env": "^7.20.0",
-    "@babel/runtime": "^7.20.0",
-    "metro-react-native-babel-preset": "0.73.7",
-    "babel-plugin-module-resolver": "^4.1.0"
+    "@babel/runtime": "^7.21.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "metro-react-native-babel-preset": "0.73.7"
   }
 }
