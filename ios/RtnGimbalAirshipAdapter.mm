@@ -47,17 +47,13 @@ RCT_EXPORT_METHOD(removeListeners:(NSInteger)count) {
     [[AdapterEventEmitter shared] removeListeners:count];
 }
 
-RCT_EXPORT_METHOD(setGimbalApiKey:(NSString *)gimbalApiKey) {
-    [GimbalService shared].gimbalApiKey = gimbalApiKey;
-}
-
 RCT_REMAP_METHOD(start,
+                 apiKey:(NSString *)apiKey
                  start_resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
 
-    [[GimbalService shared] start];
-    // TODO resolve reject based on the prompt
-    resolve(@(YES));
+    [[GimbalService shared] start:apiKey];
+    resolve(@([[GimbalService shared] isStarted]));
 }
 
 RCT_EXPORT_METHOD(stop) {

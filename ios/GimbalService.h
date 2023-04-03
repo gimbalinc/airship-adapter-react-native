@@ -16,21 +16,21 @@
 /**
  * Receives forwarded callbacks from the GMBLPlaceManagerDelegate
  */
-@property (nonatomic, weak) id<GMBLPlaceManagerDelegate> delegate;
-
-@property (nonatomic, copy, nullable) NSString *gimbalApiKey;
+@property (nonatomic, weak) id<GMBLPlaceManagerDelegate> _Nullable delegate;
 
 /**
  * Returns the shared `GimbalService` instance.
  *
  * @return The shared `GimbalAdapter` instance.
  */
-+ (instancetype)shared;
++ (instancetype _Nonnull )shared;
 
 /**
  * Starts the service.
+ *
+ * @return Boolean indicating whether or not the Adapter was started.
  */
-- (void)start;
+- (BOOL)start:(NSString* _Nonnull)apiKey;
 
 /**
  * Stops the service.

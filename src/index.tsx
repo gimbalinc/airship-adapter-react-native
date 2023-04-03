@@ -140,19 +140,12 @@ import type { Spec as GimbalAirshipAdapterSpec } from './GimbalAirshipAdapter';
  */
 export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
   /**
-   * Sets the Gimbal API key.
-   * @param apiKey The Gimbal API key.
-   */
-  setGimbalApiKey(apiKey: string) {
-    return GimbalAirshipAdapterModule.setGimbalApiKey(apiKey);
-  },
-
-  /**
    * Starts the adapter.
-   * @return A promise with the result.
+   * @param apiKey The Gimbal API key.
+   * @return A promise with a boolean result indicating whether the adapter has successfully started or not.
    */
-  start(): Promise<boolean> {
-    return GimbalAirshipAdapterModule.start();
+  start(apiKey: string): Promise<boolean> {
+    return GimbalAirshipAdapterModule.start(apiKey);
   },
 
   /**
