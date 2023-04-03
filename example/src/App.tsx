@@ -5,7 +5,7 @@
  */
 'use strict';
 
-// import { UrbanAirship, EventType } from 'urbanairship-react-native';
+import Airship, { EventType } from '@ua/react-native-airship';
 
 import {
   GimbalAirshipAdapter,
@@ -77,8 +77,6 @@ export default class AirshipSample extends Component<AppProps, AppState> {
   constructor(props: any) {
     super(props);
 
-    GimbalAirshipAdapter.setGimbalApiKey(GIMBAL_API_KEY);
-
     this.state = {
       channelId: '',
       isStarted: false,
@@ -92,7 +90,7 @@ export default class AirshipSample extends Component<AppProps, AppState> {
 
   handleStartAdapter(enabled: boolean) {
     if (enabled) {
-      GimbalAirshipAdapter.start().then((isStarted: boolean) => {
+      GimbalAirshipAdapter.start(GIMBAL_API_KEY).then((isStarted: boolean) => {
         this.setState({ isStarted });
       });
     } else {
@@ -136,16 +134,23 @@ export default class AirshipSample extends Component<AppProps, AppState> {
       this.setState({ placesConsent: consent });
     });
 
-    // UrbanAirship.getChannelId().then((channelId) => {
-    //   console.log(`channelId: ${channelId}`);
-    //   this.setState({ channelId });
-    // });
+    Airship.push.enableUserNotifications().then((isEnabled) => {
+      console.log(`is airship push enabled? ${isEnabled}`);
+    });
 
-    // UrbanAirship.addListener(EventType.Registration, (event) => {
-    //   console.log('registration:', JSON.stringify(event));
-    //   this.setState({ channelId: event.channelId });
-    //   this.setState(this.state);
-    // });
+    Airship.channel.getChannelId().then((channelId: any) => {
+      console.log(`channelId: ${channelId}`);
+      this.setState({ channelId });
+    });
+
+    Airship.addListener(
+      EventType.ChannelCreated,
+      (event: { channelId: any }) => {
+        console.log('registration:', JSON.stringify(event));
+        this.setState({ channelId: event.channelId });
+        this.setState(this.state);
+      }
+    );
 
     GimbalAirshipAdapter.addListener(RegionEventType.Enter, (event) => {
       console.log('region enter:', JSON.stringify(event));

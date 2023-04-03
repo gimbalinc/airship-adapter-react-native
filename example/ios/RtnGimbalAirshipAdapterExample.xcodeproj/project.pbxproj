@@ -10,9 +10,9 @@
 		00E356F31AD99517003FC87E /* RtnGimbalAirshipAdapterExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RtnGimbalAirshipAdapterExampleTests.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		6E5D43F9B9C549E0E2A3DB63 /* libPods-RtnGimbalAirshipAdapterExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42F118D7C8A1FC440E655541 /* libPods-RtnGimbalAirshipAdapterExample.a */; };
+		808B00F98DC95B2D4B275659 /* libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE1F000AD5A3BF2DD7B686DF /* libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		A1306D7162C8A8ABF7A67FEC /* libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBEFC7E0D58630D3D23E850 /* libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a */; };
+		91D59DCE8441551E2F6E8085 /* libPods-RtnGimbalAirshipAdapterExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B71432404B4FECEE29A25561 /* libPods-RtnGimbalAirshipAdapterExample.a */; };
 		A40A132D29A5772400D655C2 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A40A132C29A5772400D655C2 /* AirshipConfig.plist */; };
 		A40A133029A81E8200D655C2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A40A132F29A81E8200D655C2 /* AppDelegate.m */; };
 /* End PBXBuildFile section */
@@ -31,22 +31,22 @@
 		00E356EE1AD99517003FC87E /* RtnGimbalAirshipAdapterExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RtnGimbalAirshipAdapterExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* RtnGimbalAirshipAdapterExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RtnGimbalAirshipAdapterExampleTests.m; sourceTree = "<group>"; };
-		0C4558BC345664D110F9592D /* Pods-RtnGimbalAirshipAdapterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RtnGimbalAirshipAdapterExample.debug.xcconfig"; path = "Target Support Files/Pods-RtnGimbalAirshipAdapterExample/Pods-RtnGimbalAirshipAdapterExample.debug.xcconfig"; sourceTree = "<group>"; };
-		0FBEFC7E0D58630D3D23E850 /* libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		045203DC2DD9565B4E9AAD80 /* Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.release.xcconfig"; path = "Target Support Files/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* RtnGimbalAirshipAdapterExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RtnGimbalAirshipAdapterExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RtnGimbalAirshipAdapterExample/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RtnGimbalAirshipAdapterExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RtnGimbalAirshipAdapterExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RtnGimbalAirshipAdapterExample/main.m; sourceTree = "<group>"; };
-		42F118D7C8A1FC440E655541 /* libPods-RtnGimbalAirshipAdapterExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RtnGimbalAirshipAdapterExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C3E8CA1EBECA5CEDEB5B4CE /* Pods-RtnGimbalAirshipAdapterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RtnGimbalAirshipAdapterExample.debug.xcconfig"; path = "Target Support Files/Pods-RtnGimbalAirshipAdapterExample/Pods-RtnGimbalAirshipAdapterExample.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RtnGimbalAirshipAdapterExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A40A132C29A5772400D655C2 /* AirshipConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
 		A40A132E29A6DD2D00D655C2 /* RtnGimbalAirshipAdapterExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = RtnGimbalAirshipAdapterExample.entitlements; path = RtnGimbalAirshipAdapterExample/RtnGimbalAirshipAdapterExample.entitlements; sourceTree = "<group>"; };
 		A40A132F29A81E8200D655C2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = RtnGimbalAirshipAdapterExample/AppDelegate.m; sourceTree = "<group>"; };
-		A701441EE06EFD7FAC018AE6 /* Pods-RtnGimbalAirshipAdapterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RtnGimbalAirshipAdapterExample.release.xcconfig"; path = "Target Support Files/Pods-RtnGimbalAirshipAdapterExample/Pods-RtnGimbalAirshipAdapterExample.release.xcconfig"; sourceTree = "<group>"; };
-		A749E8F11B30BB789F4F45D8 /* Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
-		DD46E57837B0841F0F24D404 /* Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.release.xcconfig"; path = "Target Support Files/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		B71432404B4FECEE29A25561 /* libPods-RtnGimbalAirshipAdapterExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RtnGimbalAirshipAdapterExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCC47A4594B74391D460EEDB /* Pods-RtnGimbalAirshipAdapterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RtnGimbalAirshipAdapterExample.release.xcconfig"; path = "Target Support Files/Pods-RtnGimbalAirshipAdapterExample/Pods-RtnGimbalAirshipAdapterExample.release.xcconfig"; sourceTree = "<group>"; };
+		DE1F000AD5A3BF2DD7B686DF /* libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F36498156BBB56262D712ECB /* Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1306D7162C8A8ABF7A67FEC /* libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a in Frameworks */,
+				808B00F98DC95B2D4B275659 /* libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E5D43F9B9C549E0E2A3DB63 /* libPods-RtnGimbalAirshipAdapterExample.a in Frameworks */,
+				91D59DCE8441551E2F6E8085 /* libPods-RtnGimbalAirshipAdapterExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,8 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				42F118D7C8A1FC440E655541 /* libPods-RtnGimbalAirshipAdapterExample.a */,
-				0FBEFC7E0D58630D3D23E850 /* libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a */,
+				B71432404B4FECEE29A25561 /* libPods-RtnGimbalAirshipAdapterExample.a */,
+				DE1F000AD5A3BF2DD7B686DF /* libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -145,10 +145,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0C4558BC345664D110F9592D /* Pods-RtnGimbalAirshipAdapterExample.debug.xcconfig */,
-				A701441EE06EFD7FAC018AE6 /* Pods-RtnGimbalAirshipAdapterExample.release.xcconfig */,
-				A749E8F11B30BB789F4F45D8 /* Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.debug.xcconfig */,
-				DD46E57837B0841F0F24D404 /* Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.release.xcconfig */,
+				7C3E8CA1EBECA5CEDEB5B4CE /* Pods-RtnGimbalAirshipAdapterExample.debug.xcconfig */,
+				CCC47A4594B74391D460EEDB /* Pods-RtnGimbalAirshipAdapterExample.release.xcconfig */,
+				F36498156BBB56262D712ECB /* Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.debug.xcconfig */,
+				045203DC2DD9565B4E9AAD80 /* Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -160,12 +160,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "RtnGimbalAirshipAdapterExampleTests" */;
 			buildPhases = (
-				9E990318632050750D34B52E /* [CP] Check Pods Manifest.lock */,
+				8716520730356ED186C87833 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				F7629058AFE94DF02B287B96 /* [CP] Embed Pods Frameworks */,
-				5E8E119AC1F833E7DEDC525D /* [CP] Copy Pods Resources */,
+				AE32B0CFEE6019F488001DAF /* [CP] Embed Pods Frameworks */,
+				D0C630574B2667F322E81C7E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,14 +181,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RtnGimbalAirshipAdapterExample" */;
 			buildPhases = (
-				B4897B230E2328775BC91CA0 /* [CP] Check Pods Manifest.lock */,
+				1BC8D7EEA75D2F8C3D86C8F7 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				EC07B98ADF67251FF3D8F02A /* [CP] Embed Pods Frameworks */,
-				7DD525BDA551F6258D3B19FB /* [CP] Copy Pods Resources */,
+				7B578AF81FA1FFAC60B9D106 /* [CP] Embed Pods Frameworks */,
+				119B1A88263988B6958C0F68 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -272,24 +272,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		5E8E119AC1F833E7DEDC525D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7DD525BDA551F6258D3B19FB /* [CP] Copy Pods Resources */ = {
+		119B1A88263988B6958C0F68 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -306,29 +289,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RtnGimbalAirshipAdapterExample/Pods-RtnGimbalAirshipAdapterExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9E990318632050750D34B52E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B4897B230E2328775BC91CA0 /* [CP] Check Pods Manifest.lock */ = {
+		1BC8D7EEA75D2F8C3D86C8F7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -350,7 +311,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EC07B98ADF67251FF3D8F02A /* [CP] Embed Pods Frameworks */ = {
+		7B578AF81FA1FFAC60B9D106 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -367,7 +328,29 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RtnGimbalAirshipAdapterExample/Pods-RtnGimbalAirshipAdapterExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F7629058AFE94DF02B287B96 /* [CP] Embed Pods Frameworks */ = {
+		8716520730356ED186C87833 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE32B0CFEE6019F488001DAF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -382,6 +365,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0C630574B2667F322E81C7E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -436,7 +436,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A749E8F11B30BB789F4F45D8 /* Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.debug.xcconfig */;
+			baseConfigurationReference = F36498156BBB56262D712ECB /* Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -463,7 +463,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD46E57837B0841F0F24D404 /* Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.release.xcconfig */;
+			baseConfigurationReference = 045203DC2DD9565B4E9AAD80 /* Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -487,7 +487,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C4558BC345664D110F9592D /* Pods-RtnGimbalAirshipAdapterExample.debug.xcconfig */;
+			baseConfigurationReference = 7C3E8CA1EBECA5CEDEB5B4CE /* Pods-RtnGimbalAirshipAdapterExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -522,7 +522,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A701441EE06EFD7FAC018AE6 /* Pods-RtnGimbalAirshipAdapterExample.release.xcconfig */;
+			baseConfigurationReference = CCC47A4594B74391D460EEDB /* Pods-RtnGimbalAirshipAdapterExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
