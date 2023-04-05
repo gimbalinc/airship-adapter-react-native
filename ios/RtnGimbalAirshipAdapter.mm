@@ -87,6 +87,18 @@ RCT_EXPORT_METHOD(setUserConsent:(NSString *)type state:(NSString *)state) {
                                   toState:[self convertConsentStateString:state]];
 }
 
+RCT_EXPORT_METHOD(setShouldTrackCustomEntryEvents:(BOOL)shouldTrack) {
+    [[GimbalService shared] setShouldTrackCustomEntryEvents:shouldTrack];
+}
+
+RCT_EXPORT_METHOD(setShouldTrackCustomExitEvents:(BOOL)shouldTrack) {
+    [[GimbalService shared] setShouldTrackCustomExitEvents:shouldTrack];
+}
+
+RCT_EXPORT_METHOD(setShouldTrackRegionEvents:(BOOL)shouldTrack) {
+    [[GimbalService shared] setShouldTrackRegionEvents:shouldTrack];
+}
+
 // MARK: Gimbal PlaceManagerDelegate
 
 - (void)placeManager:(GMBLPlaceManager *)manager didBeginVisit:(GMBLVisit *)visit {

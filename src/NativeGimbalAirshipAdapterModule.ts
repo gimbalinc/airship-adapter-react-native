@@ -11,6 +11,9 @@ export interface Spec extends TurboModule {
   getGdprConsentRequirement(): Promise<Int32>;
   setUserConsent(consentType: Int32, state: Int32): void;
   getUserConsent(consentType: Int32): Promise<Int32>;
+  setShouldTrackCustomEntryEvents(shouldTrack: boolean): void;
+  setShouldTrackCustomExitEvents(shouldTrack: boolean): void;
+  setShouldTrackRegionEvents(shouldTrack: boolean): void;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>(

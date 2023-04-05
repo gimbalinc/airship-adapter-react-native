@@ -9,6 +9,22 @@
 @property (nonatomic, readonly, getter=isStarted) BOOL started;
 
 /**
+ * Enables / disables the creation of an Airship CustomEvent upon place entry. Tracking is enabled by default.
+ */
+-(void)setShouldTrackCustomEntryEvents:(BOOL)shouldTrack;
+
+/**
+ * Enables / disables the creation of an Airship CustomEvent upon place exit. Tracking is enabled by default.
+ */
+-(void)setShouldTrackCustomExitEvents:(BOOL)shouldTrack;
+
+/**
+ * Enables / disables the creation of an Airship RegionEvent upon place entry and exit. Tracking is disabled by default, since RegionEvents are
+ * deprecated in favor of CustomEvents.
+ */
+-(void)setShouldTrackRegionEvents:(BOOL)shouldTrack;
+
+/**
  * Enables alert when Bluetooth is powered off. Defaults to NO.
  */
 @property (nonatomic, assign, getter=isBluetoothPoweredOffAlertEnabled) BOOL bluetoothPoweredOffAlertEnabled;

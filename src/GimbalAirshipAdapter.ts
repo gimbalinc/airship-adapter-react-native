@@ -48,6 +48,28 @@ export interface Spec {
   getUserConsent(consentType: ConsentType): Promise<ConsentState>;
 
   /**
+   * Enables/disables creation and tracking of Airship CustomEvents upon location entry. This
+   * behavior is enabled by default.
+   * @param shouldTrack Whether or not a CustomEvent should be created when the user enters a location
+   */
+  setShouldTrackCustomEntryEvents(shouldTrack: boolean): void;
+
+  /**
+   * Enables/disables creation and tracking of Airship CustomEvents upon location exit. This
+   * behavior is enabled by default.
+   * @param shouldTrack Whether or not a CustomEvent should be created when the user exits a location
+   */
+  setShouldTrackCustomExitEvents(shouldTrack: boolean): void;
+
+  /**
+   * Enables/disables creation and tracking of Airship RegionEvents upon location entry. This
+   * behavior is disabled by default because RegionEvents have been deprecated in favor of
+   * CustomEvents.
+   * @param shouldTrack Whether or not a CustomEvent should be created when the user enters a location
+   */
+  setShouldTrackRegionEvents(shouldTrack: boolean): void;
+
+  /**
    * Adds a listener for an Airship Gimbal event.
    *
    * @param eventType The event type. Either regionEnter or regionExit.

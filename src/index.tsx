@@ -190,6 +190,30 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
   },
 
   /**
+   * Enables / disables the creation of an Airship CustomEvent upon place entry.Tracking is enabled
+   * by default.
+   */
+  setShouldTrackCustomEntryEvents(shouldTrack: boolean): void {
+    GimbalAirshipAdapterModule.setShouldTrackCustomEntryEvents(shouldTrack);
+  },
+
+  /**
+   * Enables / disables the creation of an Airship CustomEvent upon place exit. Tracking is enabled
+   * by default.
+   */
+  setShouldTrackCustomExitEvents(shouldTrack: boolean): void {
+    GimbalAirshipAdapterModule.setShouldTrackCustomExitEvents(shouldTrack);
+  },
+
+  /**
+   * Enables / disables the creation of an Airship RegionEvent upon place entry and exit. Tracking
+   * is disabled by default, since RegionEvents are deprecated in favor of CustomEvents.
+   */
+  setShouldTrackRegionEvents(shouldTrack: boolean): void {
+    GimbalAirshipAdapterModule.setShouldTrackRegionEvents(shouldTrack);
+  },
+
+  /**
    * Adds a listener for an Airship Gimbal event.
    *
    * @param eventType The event type. Either regionEnter or regionExit.

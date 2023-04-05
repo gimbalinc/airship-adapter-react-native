@@ -4,14 +4,19 @@
 
 @interface GimbalService() <GMBLPlaceManagerDelegate>
 @property (nonatomic, strong) GMBLPlaceManager *placeManager;
+@property (nonatomic, strong) NSUserDefaults *defaults;
 @end
 
 NSString *const GimbalSource = @"Gimbal";
 
 // MARK: NSUserDefault Keys
-NSString *const GimbalAlertViewKey = @"gmbl_hide_bt_power_alert_view";
-NSString *const GimbalServiceStartedKey = @"com.urbanairship.gimbal.started";
-NSString *const GimbalServiceApiKey = @"com.urbanairship.gimbal.api_key";
+NSString *const GimbalDidSetCustomEntryTrackingPreferenceKey =
+    @"com.gimbal.rtn.airship.adapter.didset.custom.entry.tracking";
+NSString *const GimbalDidSetCustomExitTrackingPreferenceKey =
+    @"com.gimbal.rtn.airship.adapter.didset.custom.exit.tracking";
+NSString *const GimbalDidSetRegionTrackingPreferenceKey =
+    @"com.gimbal.rtn.airship.adapter.didset.region.tracking";
+NSString *const defaultsSuiteName = @"com.gimbal.rtn.airship.adapter.suite.name";
 
 @implementation GimbalService
 
@@ -30,9 +35,21 @@ static id _sharedObject = nil;
 - (instancetype)init {
     self = [super init];
     if (self) {
+        _defaults = [[NSUserDefaults alloc] initWithSuiteName:defaultsSuiteName];
+        
         AirshipAdapter.shared.delegate = self;
-        AirshipAdapter.shared.shouldTrackCustomEntryEvents = true;
-        AirshipAdapter.shared.shouldTrackCustomExitEvents = true;
+        
+        if (![self didSetCustomEntryTrackingPreference]) {
+            AirshipAdapter.shared.shouldTrackCustomEntryEvents = true;
+        }
+        
+        if (![self didSetCustomExitTrackingPreference]) {
+            AirshipAdapter.shared.shouldTrackCustomExitEvents = true;
+        }
+        
+        if (![self didSetRegionEventTrackingPreference]) {
+            AirshipAdapter.shared.shouldTrackRegionEvents = false;
+        }
         [AirshipAdapter.shared restore];
     }
 
@@ -55,6 +72,21 @@ static id _sharedObject = nil;
     return [AirshipAdapter.shared isStarted];
 }
 
+-(void)setShouldTrackCustomEntryEvents:(BOOL)shouldTrack {
+    [self.defaults setBool:true forKey:GimbalDidSetCustomEntryTrackingPreferenceKey];
+    AirshipAdapter.shared.shouldTrackCustomEntryEvents = shouldTrack;
+}
+
+-(void)setShouldTrackCustomExitEvents:(BOOL)shouldTrack {
+    [self.defaults setBool:true forKey:GimbalDidSetCustomExitTrackingPreferenceKey];
+    AirshipAdapter.shared.shouldTrackCustomExitEvents = shouldTrack;
+}
+
+-(void)setShouldTrackRegionEvents:(BOOL)shouldTrack {
+    [self.defaults setBool:true forKey:GimbalDidSetRegionTrackingPreferenceKey];
+    AirshipAdapter.shared.shouldTrackRegionEvents = shouldTrack;
+}
+
 // MARK: Gimbal Methods
 
 - (BOOL)start:(NSString *)apiKey {
@@ -64,6 +96,19 @@ static id _sharedObject = nil;
 
 - (void)stop {
     [AirshipAdapter.shared stop];
+}
+
+// MARK: misc
+-(BOOL)didSetCustomEntryTrackingPreference {
+    return [self.defaults boolForKey:GimbalDidSetCustomEntryTrackingPreferenceKey];
+}
+
+-(BOOL)didSetCustomExitTrackingPreference {
+    return [self.defaults boolForKey:GimbalDidSetCustomExitTrackingPreferenceKey];
+}
+
+-(BOOL)didSetRegionEventTrackingPreference {
+    return [self.defaults boolForKey:GimbalDidSetRegionTrackingPreferenceKey];
 }
 
 // MARK: PlaceManager Delegate Methods

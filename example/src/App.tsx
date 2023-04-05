@@ -120,6 +120,11 @@ export default class AirshipSample extends Component<AppProps, AppState> {
   }
 
   componentDidMount() {
+    // by default, custom entry and custom exit events are enabled, and region events are disabled
+    // GimbalAirshipAdapter.setShouldTrackCustomEntryEvents(false);
+    // GimbalAirshipAdapter.setShouldTrackCustomExitEvents(false);
+    // GimbalAirshipAdapter.setShouldTrackRegionEvents(true);
+
     GimbalAirshipAdapter.isStarted().then((isStarted) => {
       this.setState({ isStarted });
     });
