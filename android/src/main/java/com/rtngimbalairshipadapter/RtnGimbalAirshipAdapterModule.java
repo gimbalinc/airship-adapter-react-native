@@ -1,13 +1,18 @@
 package com.rtngimbalairshipadapter;
 
+import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;
+import com.gimbal.airship.AirshipAdapter;
+import com.gimbal.android.Gimbal;
 import com.gimbal.android.PrivacyManager;
 import com.gimbal.android.Visit;
-import com.gimbal.airship.AirshipAdapter;
 import com.urbanairship.analytics.CustomEvent;
 import com.urbanairship.analytics.location.RegionEvent;
 
@@ -15,8 +20,20 @@ import com.urbanairship.analytics.location.RegionEvent;
 public class RtnGimbalAirshipAdapterModule extends com.rtngimbalairshipadapter.RtnGimbalAirshipAdapterSpec {
   public static final String NAME = "RtnGimbalAirshipAdapter";
 
+  private static final String PREFERENCE_FILE_KEY =
+    "com.gimbal.rtn.react.native.airship.adapter.android.preference.key";
+  private static final String PREFERENCE_KEY_DID_SET_CUSTOM_ENTRY_PREFERENCE =
+    "com.gimbal.rtn.react.native.airship.adapter.didset.customentry.preference";
+  private static final String PREFERENCE_KEY_DID_SET_CUSTOM_EXIT_PREFERENCE =
+    "com.gimbal.rtn.react.native.airship.adapter.didset.customexit.preference";
+  private static final String PREFERENCE_KEY_DID_SET_REGION_EVENT_PREFERENCE =
+    "com.gimbal.rtn.react.native.airship.adapter.didset.regionevent.preference";
+
+  private final SharedPreferences preferences;
+
   RtnGimbalAirshipAdapterModule(ReactApplicationContext context) {
     super(context);
+    preferences = context.getSharedPreferences(PREFERENCE_FILE_KEY, Context.MODE_PRIVATE);
   }
 
   @Override
@@ -28,9 +45,10 @@ public class RtnGimbalAirshipAdapterModule extends com.rtngimbalairshipadapter.R
   @Override
   public void initialize() {
     super.initialize();
+
     EventEmitter.shared().attachReactContext(getReactApplicationContext());
 
-    AirshipAdapter.shared(getReactApplicationContext()).addListener(new AirshipAdapter.Listener() {
+    airshipAdapter().addListener(new AirshipAdapter.Listener() {
       @Override
       public void onRegionEntered(@NonNull RegionEvent regionEvent, @NonNull Visit visit) {
         EventEmitter.shared().sendEvent(VisitEvent.enterEvent(visit));
@@ -51,6 +69,18 @@ public class RtnGimbalAirshipAdapterModule extends com.rtngimbalairshipadapter.R
         EventEmitter.shared().sendEvent(VisitEvent.exitEvent(visit));
       }
     });
+
+    if (!didSetCustomEntryTrackingPreference()) {
+      airshipAdapter().setShouldTrackCustomEntryEvent(true);
+    }
+
+    if (!didSetCustomExitTrackingPreference()) {
+      airshipAdapter().setShouldTrackCustomExitEvent(true);
+    }
+
+    if (!didSetRegionEventTrackingPreference()) {
+      airshipAdapter().setShouldTrackRegionEvent(false);
+    }
   }
 
   /**
@@ -85,22 +115,26 @@ public class RtnGimbalAirshipAdapterModule extends com.rtngimbalairshipadapter.R
 
   @ReactMethod
   public void isStarted(Promise promise) {
-    promise.resolve(AirshipAdapter.shared(getReactApplicationContext()).isStarted());
+    promise.resolve(airshipAdapter().isStarted());
   }
 
+  @ReactMethod
+  public void setApiKey(String apiKey) {
+    Gimbal.setApiKey((Application) getReactApplicationContext().getApplicationContext(), apiKey);
+  }
 
   @ReactMethod
-  public void start(String apiKey) {
+  public void start(String apiKey, Promise promise) {
     if (apiKey != null) {
-      AirshipAdapter.shared(getReactApplicationContext()).start(apiKey);
-      AirshipAdapter.shared(getReactApplicationContext()).setShouldTrackCustomExitEvent(true);
-      AirshipAdapter.shared(getReactApplicationContext()).setShouldTrackCustomEntryEvent(true);
+      airshipAdapter().start(apiKey);
     }
+
+    promise.resolve(airshipAdapter().isStarted());
   }
 
   @ReactMethod
   public void stop() {
-    AirshipAdapter.shared(getReactApplicationContext()).stop();
+    airshipAdapter().stop();
   }
 
   @ReactMethod
@@ -118,6 +152,24 @@ public class RtnGimbalAirshipAdapterModule extends com.rtngimbalairshipadapter.R
   public void getUserConsent(String type, Promise promise) {
     String result = convertConsentState(PrivacyManager.getInstance().getUserConsent(convertConsentType(type)));
     promise.resolve(result);
+  }
+
+  @ReactMethod
+  public void setShouldTrackCustomEntryEvents(boolean shouldTrack) {
+    editBooleanPreference(PREFERENCE_KEY_DID_SET_CUSTOM_ENTRY_PREFERENCE, true);
+    airshipAdapter().setShouldTrackCustomEntryEvent(shouldTrack);
+  }
+
+  @ReactMethod
+  public void setShouldTrackCustomExitEvents(boolean shouldTrack) {
+    editBooleanPreference(PREFERENCE_KEY_DID_SET_CUSTOM_EXIT_PREFERENCE, true);
+    airshipAdapter().setShouldTrackCustomExitEvent(shouldTrack);
+  }
+
+  @ReactMethod
+  public void setShouldTrackRegionEvents(boolean shouldTrack) {
+    editBooleanPreference(PREFERENCE_KEY_DID_SET_REGION_EVENT_PREFERENCE, true);
+    airshipAdapter().setShouldTrackRegionEvent(shouldTrack);
   }
 
   @NonNull
@@ -142,6 +194,18 @@ public class RtnGimbalAirshipAdapterModule extends com.rtngimbalairshipadapter.R
       default:
         throw new IllegalArgumentException("Unexpected consent state: " + consentState);
     }
+  }
+
+  private boolean didSetCustomEntryTrackingPreference() {
+    return preferences.getBoolean(PREFERENCE_KEY_DID_SET_CUSTOM_ENTRY_PREFERENCE, false);
+  }
+
+  private boolean didSetCustomExitTrackingPreference() {
+    return preferences.getBoolean(PREFERENCE_KEY_DID_SET_CUSTOM_EXIT_PREFERENCE, false);
+  }
+
+  private boolean didSetRegionEventTrackingPreference() {
+    return preferences.getBoolean(PREFERENCE_KEY_DID_SET_REGION_EVENT_PREFERENCE, false);
   }
 
   @NonNull
@@ -170,5 +234,16 @@ public class RtnGimbalAirshipAdapterModule extends com.rtngimbalairshipadapter.R
       default:
         throw new IllegalArgumentException("Unexpected consent requirement: " + consentRequirement);
     }
+  }
+
+  @NonNull
+  private AirshipAdapter airshipAdapter() {
+    return AirshipAdapter.shared(getReactApplicationContext());
+  }
+
+  private void editBooleanPreference(String preferenceKey, boolean value) {
+    SharedPreferences.Editor editor = preferences.edit();
+    editor.putBoolean(preferenceKey, value);
+    editor.apply();
   }
 }
