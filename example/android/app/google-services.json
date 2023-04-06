@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "463594784239",
+    "firebase_url": "https://third-party-54ee8.firebaseio.com",
+    "project_id": "third-party-54ee8",
+    "storage_bucket": "third-party-54ee8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463594784239:android:0ee72a9bb3756da443e21a",
+        "android_client_info": {
+          "package_name": "com.gimbal.airship.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463594784239-vaa9jv3p7r9nakgs66jm2572if8v9n97.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPeVruLdkGe7u1be4iO75KRiizIHd_sjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463594784239-vaa9jv3p7r9nakgs66jm2572if8v9n97.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463594784239:android:c42eb37d3498c3b443e21a",
+        "android_client_info": {
+          "package_name": "com.gimbal.airship.cordova.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463594784239-vaa9jv3p7r9nakgs66jm2572if8v9n97.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPeVruLdkGe7u1be4iO75KRiizIHd_sjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463594784239-vaa9jv3p7r9nakgs66jm2572if8v9n97.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463594784239:android:f1bbc320b5c412b343e21a",
+        "android_client_info": {
+          "package_name": "com.gimbal.airship.reactnative.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463594784239-vaa9jv3p7r9nakgs66jm2572if8v9n97.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPeVruLdkGe7u1be4iO75KRiizIHd_sjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463594784239-vaa9jv3p7r9nakgs66jm2572if8v9n97.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

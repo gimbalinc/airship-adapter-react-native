@@ -95,7 +95,7 @@ android {
 
     namespace "com.rtngimbalairshipadapterexample"
     defaultConfig {
-        applicationId "com.rtngimbalairshipadapterexample"
+        applicationId "com.gimbal.airship.reactnative.android"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -168,3 +168,11 @@ dependencies {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+def googleServicesFile = rootProject.file('app/google-services.json')
+if (googleServicesFile.exists()) {
+  apply plugin: 'com.google.gms.google-services'
+} else {
+  Logging.getLogger("sample-app")
+    .warn("sample-app will not run without supplying your Firebase google-services.json")
+}
