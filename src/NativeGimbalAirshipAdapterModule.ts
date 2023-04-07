@@ -6,7 +6,7 @@ export interface Spec extends TurboModule {
   addListener(eventName: string): void;
   removeListeners(count: Int32): void;
   setGimbalApiKey(gimbalApiKey: string): void;
-  start(): Promise<boolean>;
+  start(gimbalApiKey: string): Promise<boolean>;
   stop(): void;
   isStarted(): Promise<boolean>;
   getGdprConsentRequirement(): Promise<Int32>;

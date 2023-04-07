@@ -152,6 +152,8 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
   /**
    * Starts the adapter.
    * @param apiKey The Gimbal API key.
+   * @return A promise with a boolean result indicating whether the adapter has successfully started
+   * or not.
    */
   start(apiKey: string): Promise<boolean> {
     return GimbalAirshipAdapterModule.start(apiKey);

@@ -8,12 +8,6 @@
 
 #import <Gimbal/Gimbal.h>
 
-#if __has_include("AirshipLib.h")
-#import "AirshipLib.h"
-#else
-@import AirshipKit;
-#endif
-
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
 #import <React/RCTCxxBridgeDelegate.h>
@@ -54,10 +48,6 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   _bridgeAdapter = [[RCTSurfacePresenterBridgeAdapter alloc] initWithBridge:bridge contextContainer:_contextContainer];
   bridge.surfacePresenter = _bridgeAdapter.surfacePresenter;
 #endif
-  
-  [UAirship takeOff:nil launchOptions:launchOptions];
-  UAirship.push.userPushNotificationsEnabled = true;
-  UAirship.push.defaultPresentationOptions = UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound;
   
   NSDictionary *initProps = [self prepareInitialProps];
   UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"RtnGimbalAirshipAdapterExample", initProps);

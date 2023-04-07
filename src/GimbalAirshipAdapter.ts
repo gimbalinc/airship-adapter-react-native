@@ -19,7 +19,8 @@ export interface Spec {
 
   /**
    * Starts the adapter.
-   * @param apiKey The Gimbal API key
+   * @param apiKey The Gimbal API key.
+   * @return A promise with a boolean result indicating whether the adapter successfully started.
    */
   start(apiKey: string): Promise<boolean>;
 
