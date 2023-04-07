@@ -140,6 +140,16 @@ import type { Spec as GimbalAirshipAdapterSpec } from './GimbalAirshipAdapter';
  */
 export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
   /**
+   * Saves your Gimbal API key without explicitly starting the adapter. If you want to call adapter
+   * methods on Androids while the adapter is off, you must first pass in your API key using this
+   * method.
+   * @param apiKey The Gimbal API key
+   */
+  setApiKey(apiKey: string): void {
+    return GimbalAirshipAdapterModule.setApiKey(apiKey);
+  },
+
+  /**
    * Starts the adapter.
    * @param apiKey The Gimbal API key.
    * @return A promise with a boolean result indicating whether the adapter has successfully started or not.

@@ -2,14 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>developmentAppKey</key>
-    <string>CWEYq7EbRGW051Lwj4U6JQ</string>
-    <key>developmentAppSecret</key>
-    <string>iJg91l4gS7at56xYn7MWAQ</string>
-    <key>productionAppKey</key>
-    <string>CWEYq7EbRGW051Lwj4U6JQ</string>
-    <key>productionAppSecret</key>
-    <string>iJg91l4gS7at56xYn7MWAQ</string>
+	<key>developmentAppKey</key>
+	<string>wIeVOwjOQAysPP1eQloiaw</string>
+	<key>developmentAppSecret</key>
+	<string>0_nMsOKaThqqJFYMgHwl-w</string>
+	<key>productionAppKey</key>
+	<string>wIeVOwjOQAysPP1eQloiaw</string>
+	<key>productionAppSecret</key>
+	<string>0_nMsOKaThqqJFYMgHwl-w</string>
 </dict>
 </plist>
-

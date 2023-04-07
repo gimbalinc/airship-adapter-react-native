@@ -47,6 +47,10 @@ RCT_EXPORT_METHOD(removeListeners:(NSInteger)count) {
     [[AdapterEventEmitter shared] removeListeners:count];
 }
 
+RCT_EXPORT_METHOD(setApiKey:(NSString *)apiKey) {
+    
+}
+
 RCT_REMAP_METHOD(start,
                  apiKey:(NSString *)apiKey
                  start_resolver:(RCTPromiseResolveBlock)resolve

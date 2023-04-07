@@ -26,7 +26,7 @@ import {
   ScrollView,
 } from 'react-native';
 
-const GIMBAL_API_KEY = 'f0b43463-fe46-4e69-9527-62ab0be6ad4a';
+const GIMBAL_API_KEY = '99820df7-26f7-40f3-95ba-3410a36d341c';
 
 const styles = StyleSheet.create({
   backgroundContainer: {
@@ -76,6 +76,8 @@ interface AppState {
 export default class AirshipSample extends Component<AppProps, AppState> {
   constructor(props: any) {
     super(props);
+
+    GimbalAirshipAdapter.setApiKey(GIMBAL_API_KEY);
 
     this.state = {
       channelId: '',

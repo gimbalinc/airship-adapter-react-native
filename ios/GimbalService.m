@@ -1,5 +1,6 @@
 #import "GimbalService.h"
 #import <Foundation/Foundation.h>
+#import <Gimbal/Gimbal.h>
 @import GimbalAirshipAdapter;
 
 @interface GimbalService() <GMBLPlaceManagerDelegate>
@@ -88,6 +89,10 @@ static id _sharedObject = nil;
 }
 
 // MARK: Gimbal Methods
+
+-(void)setApiKey:(NSString *)apiKey {
+    [Gimbal setAPIKey:apiKey options:nil];
+}
 
 - (BOOL)start:(NSString *)apiKey {
     [AirshipAdapter.shared start:apiKey];

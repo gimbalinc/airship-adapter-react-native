@@ -42,6 +42,13 @@
 + (instancetype _Nonnull )shared;
 
 /**
+ * Sets the Gimbal API Key.
+ *
+ *@param apiKey Your Gimbal API Key
+ */
+-(void)setApiKey:(NSString *)apiKey;
+
+/**
  * Starts the service.
  *
  * @return Boolean indicating whether or not the Adapter was started.
