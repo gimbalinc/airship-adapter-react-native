@@ -26,10 +26,3 @@ buildscript {
     }
   }
 }
-
-repositories {
-  google()
-  mavenCentral()
-}
-
-
