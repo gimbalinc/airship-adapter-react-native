@@ -17,7 +17,7 @@ import com.urbanairship.analytics.CustomEvent;
 import com.urbanairship.analytics.location.RegionEvent;
 
 
-public class RtnGimbalAirshipAdapterModule extends com.rtngimbalairshipadapter.RtnGimbalAirshipAdapterSpec {
+public class RtnGimbalAirshipAdapterModule extends RtnGimbalAirshipAdapterSpec {
   public static final String NAME = "RtnGimbalAirshipAdapter";
 
   private static final String PREFERENCE_FILE_KEY =
