@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>developmentAppKey</key>
-	<string>wIeVOwjOQAysPP1eQloiaw</string>
+	<string>Your development app key</string>
 	<key>developmentAppSecret</key>
-	<string>0_nMsOKaThqqJFYMgHwl-w</string>
+	<string>Your development app secret</string>
 	<key>productionAppKey</key>
-	<string>wIeVOwjOQAysPP1eQloiaw</string>
+	<string>Your production app key</string>
 	<key>productionAppSecret</key>
-	<string>0_nMsOKaThqqJFYMgHwl-w</string>
+	<string>Your production app secret</string>
 </dict>
 </plist>

@@ -26,7 +26,7 @@ import {
 
 import Airship, { EventType } from '@ua/react-native-airship';
 
-const GIMBAL_API_KEY = '892fd8bc-36e3-4f90-91ab-1ebf555dec66';
+const GIMBAL_API_KEY = 'YOUR_API_KEY';
 
 const styles = StyleSheet.create({
   backgroundContainer: {
