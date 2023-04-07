@@ -5,8 +5,6 @@
  */
 'use strict';
 
-// import { UrbanAirship, EventType } from 'urbanairship-react-native';
-
 import {
   GimbalAirshipAdapter,
   ConsentType,
@@ -26,7 +24,9 @@ import {
   ScrollView,
 } from 'react-native';
 
-const GIMBAL_API_KEY = 'f0b43463-fe46-4e69-9527-62ab0be6ad4a';
+import Airship, { EventType } from '@ua/react-native-airship';
+
+const GIMBAL_API_KEY = 'YOUR_API_KEY';
 
 const styles = StyleSheet.create({
   backgroundContainer: {
@@ -77,7 +77,7 @@ export default class AirshipSample extends Component<AppProps, AppState> {
   constructor(props: any) {
     super(props);
 
-    GimbalAirshipAdapter.setGimbalApiKey(GIMBAL_API_KEY);
+    GimbalAirshipAdapter.setApiKey(GIMBAL_API_KEY);
 
     this.state = {
       channelId: '',
@@ -92,7 +92,7 @@ export default class AirshipSample extends Component<AppProps, AppState> {
 
   handleStartAdapter(enabled: boolean) {
     if (enabled) {
-      GimbalAirshipAdapter.start().then((isStarted: boolean) => {
+      GimbalAirshipAdapter.start(GIMBAL_API_KEY).then((isStarted: boolean) => {
         this.setState({ isStarted });
       });
     } else {
@@ -122,7 +122,13 @@ export default class AirshipSample extends Component<AppProps, AppState> {
   }
 
   componentDidMount() {
+    // by default, custom entry and custom exit events are enabled, and region events are disabled
+    // GimbalAirshipAdapter.setShouldTrackCustomEntryEvents(true);
+    // GimbalAirshipAdapter.setShouldTrackCustomExitEvents(true);
+    // GimbalAirshipAdapter.setShouldTrackRegionEvents(false);
+
     GimbalAirshipAdapter.isStarted().then((isStarted) => {
+      console.log(`GimbalAirshipAdapter started? ${isStarted}`);
       this.setState({ isStarted });
     });
 
@@ -136,16 +142,21 @@ export default class AirshipSample extends Component<AppProps, AppState> {
       this.setState({ placesConsent: consent });
     });
 
-    // UrbanAirship.getChannelId().then((channelId) => {
-    //   console.log(`channelId: ${channelId}`);
-    //   this.setState({ channelId });
-    // });
+    Airship.push.enableUserNotifications().then((isEnabled) => {
+      console.log(`Airship push enabled? ${isEnabled}`);
+    });
 
-    // UrbanAirship.addListener(EventType.Registration, (event) => {
-    //   console.log('registration:', JSON.stringify(event));
-    //   this.setState({ channelId: event.channelId });
-    //   this.setState(this.state);
-    // });
+    Airship.channel.getChannelId().then((channelId: any) => {
+      console.log(`Airship channelId: ${channelId}`);
+      this.setState({ channelId });
+    });
+
+    Airship.addListener(
+      EventType.ChannelCreated,
+      (event: { channelId: any }) => {
+        this.setState({ channelId: event.channelId });
+      }
+    );
 
     GimbalAirshipAdapter.addListener(RegionEventType.Enter, (event) => {
       console.log('region enter:', JSON.stringify(event));

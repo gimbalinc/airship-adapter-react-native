@@ -10,16 +10,19 @@ import type { EmitterSubscription } from 'react-native';
 
 export interface Spec {
   /**
-   * Sets the Gimbal API key.
-   * @param apiKey The Gimbal API key.
+   * Saves your Gimbal API key without explicitly starting the adapter. If you want to call adapter
+   * methods on Androids while the adapter is off, you must first pass in your API key using this
+   * method.
+   * @param apiKey The Gimbal API key
    */
-  setGimbalApiKey(apiKey: string): void;
+  setApiKey(apiKey: string): void;
 
   /**
    * Starts the adapter.
-   * @return A promise with the result.
+   * @param apiKey The Gimbal API key.
+   * @return A promise with a boolean result indicating whether the adapter successfully started.
    */
-  start(): Promise<boolean>;
+  start(apiKey: string): Promise<boolean>;
 
   /**
    * Stops the Gimbal Adapter.
@@ -51,6 +54,31 @@ export interface Spec {
    * @return A promise with the result.
    */
   getUserConsent(consentType: ConsentType): Promise<ConsentState>;
+
+  /**
+   * Enables/disables creation and tracking of Airship CustomEvents upon location entry. This
+   * behavior is enabled by default.
+   * @param shouldTrack Whether or not a CustomEvent should be created when the user enters a
+   * location
+   */
+  setShouldTrackCustomEntryEvents(shouldTrack: boolean): void;
+
+  /**
+   * Enables/disables creation and tracking of Airship CustomEvents upon location exit. This
+   * behavior is enabled by default.
+   * @param shouldTrack Whether or not a CustomEvent should be created when the user exits a
+   * location
+   */
+  setShouldTrackCustomExitEvents(shouldTrack: boolean): void;
+
+  /**
+   * Enables/disables creation and tracking of Airship RegionEvents upon location entry. This
+   * behavior is disabled by default because RegionEvents have been deprecated in favor of
+   * CustomEvents.
+   * @param shouldTrack Whether or not a RegionEvent should be created when the user enters or exits
+   * a location
+   */
+  setShouldTrackRegionEvents(shouldTrack: boolean): void;
 
   /**
    * Adds a listener for an Airship Gimbal event.

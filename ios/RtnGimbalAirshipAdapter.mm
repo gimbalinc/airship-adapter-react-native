@@ -47,17 +47,17 @@ RCT_EXPORT_METHOD(removeListeners:(NSInteger)count) {
     [[AdapterEventEmitter shared] removeListeners:count];
 }
 
-RCT_EXPORT_METHOD(setGimbalApiKey:(NSString *)gimbalApiKey) {
-    [GimbalService shared].gimbalApiKey = gimbalApiKey;
+RCT_EXPORT_METHOD(setApiKey:(NSString *)apiKey) {
+    
 }
 
 RCT_REMAP_METHOD(start,
+                 apiKey:(NSString *)apiKey
                  start_resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
 
-    [[GimbalService shared] start];
-    // TODO resolve reject based on the prompt
-    resolve(@(YES));
+    [[GimbalService shared] start:apiKey];
+    resolve(@([[GimbalService shared] isStarted]));
 }
 
 RCT_EXPORT_METHOD(stop) {
@@ -89,6 +89,18 @@ RCT_REMAP_METHOD(getUserConsent,
 RCT_EXPORT_METHOD(setUserConsent:(NSString *)type state:(NSString *)state) {
     [GMBLPrivacyManager setUserConsentFor:[self convertConsentTypeString:type]
                                   toState:[self convertConsentStateString:state]];
+}
+
+RCT_EXPORT_METHOD(setShouldTrackCustomEntryEvents:(BOOL)shouldTrack) {
+    [[GimbalService shared] setShouldTrackCustomEntryEvents:shouldTrack];
+}
+
+RCT_EXPORT_METHOD(setShouldTrackCustomExitEvents:(BOOL)shouldTrack) {
+    [[GimbalService shared] setShouldTrackCustomExitEvents:shouldTrack];
+}
+
+RCT_EXPORT_METHOD(setShouldTrackRegionEvents:(BOOL)shouldTrack) {
+    [[GimbalService shared] setShouldTrackRegionEvents:shouldTrack];
 }
 
 // MARK: Gimbal PlaceManagerDelegate
