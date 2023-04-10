@@ -4,13 +4,13 @@ The Gimbal Airship Adapter is a React Native dependency that integrates Gimbal P
 with Airship Custom Events for React Native apps.
 
 ## Resources
+
 - [Gimbal Developer Guide](https://gimbal.com/doc/android/v4/devguide.html)
 - [Gimbal Manager Portal](https://manager.gimbal.com)
 - [Airship React Native SDK](https://github.com/urbanairship/react-native-airship)
 - [Airship React Native Documentation](https://docs.airship.com/platform/mobile/setup/sdk/react-native/)
 - [Airship General Documentation](https://docs.airship.com/platform/)
 - [Airship and Gimbal Integration guide](https://docs.airship.com/partners/gimbal/)
-
 
 ## Installation
 
@@ -62,28 +62,30 @@ If granted, Gimbal will use fine, coarse and background location permissions, as
 
 ```xml
 <key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Let this sample app trigger Gimbal beacon-based events</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Let this sample app trigger Gimbal location-based events</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Let this sample app trigger Gimbal location-based events</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Let this sample app trigger Gimbal location-based events while the app is in use</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>location</string>
-		<string>processing</string> <!-- required by Airship -->
-		<string>remote-notification</string> <!-- required for notifications -->
-	</array>
+  <string>Let this sample app trigger Gimbal beacon-based events</string>
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>Let this sample app trigger Gimbal location-based events</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>Let this sample app trigger Gimbal location-based events</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Let this sample app trigger Gimbal location-based events while the app is in use</string>
+  <key>UIBackgroundModes</key>
+  <array>
+    <string>location</string>
+    <string>processing</string> <!-- required by Airship -->
+    <string>remote-notification</string> <!-- required for notifications -->
+  </array>
 ```
 
 ### Android
+
 ```xml
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 ```
 
 ## Event Tracking
+
 The adapter can be configured to track Airship Events when Gimbal Place Events are triggered. This tracking can be enabled or disabled as shown:
 
 ```js
