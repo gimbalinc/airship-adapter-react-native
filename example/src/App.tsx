@@ -15,54 +15,15 @@ import {
 
 import React, { Component } from 'react';
 
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Switch,
-  ScrollView,
-} from 'react-native';
+import { Text, View, Switch, ScrollView } from 'react-native';
 
 import Airship, { EventType } from '@ua/react-native-airship';
 
-const GIMBAL_API_KEY = 'YOUR_API_KEY';
+import GlobalStyles from './global/GlobalStyles';
 
-const styles = StyleSheet.create({
-  backgroundContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#E0A500',
-  },
-  contentContainer: {
-    paddingVertical: 20,
-    alignItems: 'center',
-    backgroundColor: '#E0A500',
-  },
-  cellContainer: {
-    flex: 0,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#E0A500',
-    marginTop: 15,
-    marginRight: 10,
-    marginLeft: 10,
-    marginBottom: 10,
-  },
-  text: {
-    fontSize: 16,
-    color: '#0d6a83',
-    textAlign: 'center',
-    padding: 10,
-  },
-  rowLabel: {
-    flexDirection: 'row',
-    color: '#0d6a83',
-    fontSize: 16,
-    marginRight: 10,
-  },
-});
+import EnableAdapterToggle from './components/EnableAdapterToggle/EnableAdapterToggle';
+
+const GIMBAL_API_KEY = '99820df7-26f7-40f3-95ba-3410a36d341c';
 
 interface AppProps {}
 
@@ -128,7 +89,7 @@ export default class AirshipSample extends Component<AppProps, AppState> {
     // GimbalAirshipAdapter.setShouldTrackRegionEvents(false);
 
     GimbalAirshipAdapter.isStarted().then((isStarted) => {
-      console.log(`GimbalAirshipAdapter started? ${isStarted}`);
+      // console.log(`GimbalAirshipAdapter started? ${isStarted}`);
       this.setState({ isStarted });
     });
 
@@ -169,43 +130,54 @@ export default class AirshipSample extends Component<AppProps, AppState> {
 
   render() {
     return (
-      <View style={styles.backgroundContainer}>
-        <ScrollView contentContainerStyle={styles.contentContainer}>
-          <Image
-            style={{
-              width: 300,
-              height: 38,
-              marginTop: 50,
-              alignItems: 'center',
-            }}
-            source={require('../img/urban-airship-sidebyside.png')}
-          />
+      <View style={GlobalStyles.backgroundContainer}>
+        <ScrollView contentContainerStyle={GlobalStyles.contentContainer}>
           <View style={{ height: 75 }} />
-          <EnableGimbalAdapter
-            isStarted={this.state.isStarted}
-            handleStartAdapter={this.handleStartAdapter}
-          />
-          <View>
-            <Text style={styles.text}>
-              Airship Channel ID {'\n'} {this.state.channelId}
-            </Text>
-          </View>
-
-          <View style={{ height: 75 }} />
-          <PlacesConsentAdapter
-            placesConsent={this.state.placesConsent}
-            handlePlacesConsent={this.handlePlacesConsent}
-          />
-          <View>
-            <Text style={styles.text}>
-              GDPR Consent Requirement {this.state.gdprConsentRequirement}
-            </Text>
-            <Text style={styles.text}>
-              Places Consent {this.state.placesConsent}
-            </Text>
-          </View>
+          <Text style={GlobalStyles.header}>Gimbal Airship Adapter</Text>
+          <View style={{ height: 30 }} />
+          <Text style={GlobalStyles.text}>
+            Gimbal API Key: ${GIMBAL_API_KEY}
+          </Text>
+          <EnableAdapterToggle apiKey={GIMBAL_API_KEY} />
         </ScrollView>
       </View>
+      // <View style={styles.backgroundContainer}>
+      //   <ScrollView contentContainerStyle={styles.contentContainer}>
+      //     <Image
+      //       style={{
+      //         width: 300,
+      //         height: 38,
+      //         marginTop: 50,
+      //         alignItems: 'center',
+      //       }}
+      //       source={require('../img/urban-airship-sidebyside.png')}
+      //     />
+      //     <View style={{ height: 75 }} />
+      //     <EnableGimbalAdapter
+      //       isStarted={this.state.isStarted}
+      //       handleStartAdapter={this.handleStartAdapter}
+      //     />
+      //     <View>
+      //       <Text style={styles.text}>
+      //         Airship Channel ID {'\n'} {this.state.channelId}
+      //       </Text>
+      //     </View>
+
+      //     <View style={{ height: 75 }} />
+      //     <PlacesConsentAdapter
+      //       placesConsent={this.state.placesConsent}
+      //       handlePlacesConsent={this.handlePlacesConsent}
+      //     />
+      //     <View>
+      //       <Text style={styles.text}>
+      //         GDPR Consent Requirement {this.state.gdprConsentRequirement}
+      //       </Text>
+      //       <Text style={styles.text}>
+      //         Places Consent {this.state.placesConsent}
+      //       </Text>
+      //     </View>
+      //   </ScrollView>
+      // </View>
     );
   }
 }
@@ -221,8 +193,8 @@ class EnableGimbalAdapter extends Component<
 > {
   render() {
     return (
-      <View style={styles.cellContainer}>
-        <Text style={styles.rowLabel}>Enable Gimbal Adapter</Text>
+      <View style={GlobalStyles.cellContainer}>
+        <Text style={GlobalStyles.rowLabel}>Enable Gimbal Adapter</Text>
         <Switch
           trackColor={{ true: '#0d6a83', false: null }}
           onValueChange={(value) => this.props.handleStartAdapter(value)}
@@ -244,8 +216,8 @@ class PlacesConsentAdapter extends Component<
 > {
   render() {
     return (
-      <View style={styles.cellContainer}>
-        <Text style={styles.rowLabel}>Consent to Gimbal Places</Text>
+      <View style={GlobalStyles.cellContainer}>
+        <Text style={GlobalStyles.rowLabel}>Consent to Gimbal Places</Text>
         <Switch
           trackColor={{ true: '#0d6a83', false: null }}
           onValueChange={(value) => this.props.handlePlacesConsent(value)}
