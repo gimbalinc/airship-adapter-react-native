@@ -23,6 +23,8 @@ import GlobalStyles from './global/GlobalStyles';
 
 import EnableAdapterToggle from './components/EnableAdapterToggle/EnableAdapterToggle';
 
+import SetConsentToggle from './components/SetConsentToggle/SetConsentToggle';
+
 const GIMBAL_API_KEY = '99820df7-26f7-40f3-95ba-3410a36d341c';
 
 interface AppProps {}
@@ -139,6 +141,8 @@ export default class AirshipSample extends Component<AppProps, AppState> {
             Gimbal API Key: ${GIMBAL_API_KEY}
           </Text>
           <EnableAdapterToggle apiKey={GIMBAL_API_KEY} />
+          <View style={{ height: 30 }} />
+          <SetConsentToggle />
         </ScrollView>
       </View>
       // <View style={styles.backgroundContainer}>
