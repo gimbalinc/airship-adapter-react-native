@@ -21,9 +21,11 @@ import Airship, { EventType } from '@ua/react-native-airship';
 
 import GlobalStyles from './global/GlobalStyles';
 
-import EnableAdapterToggle from './components/EnableAdapterToggle/EnableAdapterToggle';
+import EnableAdapterToggle from './features/EnableAdapterToggle/EnableAdapterToggle';
 
-import SetConsentToggle from './components/SetConsentToggle/SetConsentToggle';
+import SetConsentToggle from './features/SetConsentToggle/SetConsentToggle';
+
+import EventTranscriptContainer from './features/EventTranscript/EventTranscriptContainer';
 
 const GIMBAL_API_KEY = '99820df7-26f7-40f3-95ba-3410a36d341c';
 
@@ -121,13 +123,13 @@ export default class AirshipSample extends Component<AppProps, AppState> {
       }
     );
 
-    GimbalAirshipAdapter.addListener(RegionEventType.Enter, (event) => {
-      console.log('region enter:', JSON.stringify(event));
-    });
+    // GimbalAirshipAdapter.addListener(RegionEventType.Enter, (event) => {
+    //   console.log('region enter:', JSON.stringify(event));
+    // });
 
-    GimbalAirshipAdapter.addListener(RegionEventType.Exit, (event) => {
-      console.log('region exit:', JSON.stringify(event));
-    });
+    // GimbalAirshipAdapter.addListener(RegionEventType.Exit, (event) => {
+    //   console.log('region exit:', JSON.stringify(event));
+    // });
   }
 
   render() {
@@ -143,6 +145,7 @@ export default class AirshipSample extends Component<AppProps, AppState> {
           <EnableAdapterToggle apiKey={GIMBAL_API_KEY} />
           <View style={{ height: 30 }} />
           <SetConsentToggle />
+          <EventTranscriptContainer />
         </ScrollView>
       </View>
       // <View style={styles.backgroundContainer}>
