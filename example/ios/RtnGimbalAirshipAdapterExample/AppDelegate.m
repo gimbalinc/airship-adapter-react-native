@@ -8,12 +8,6 @@
 
 #import <Gimbal/Gimbal.h>
 
-#if __has_include("AirshipLib.h")
-#import "AirshipLib.h"
-#else
-@import AirshipKit;
-#endif
-
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
 #import <React/RCTCxxBridgeDelegate.h>
@@ -43,7 +37,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  RCTAppSetupPrepareApp(application);
+  RCTAppSetupPrepareApp(application, RCTTurboModuleEnabled());
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   
@@ -55,12 +49,8 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   bridge.surfacePresenter = _bridgeAdapter.surfacePresenter;
 #endif
   
-  [UAirship takeOff:nil launchOptions:launchOptions];
-  UAirship.push.userPushNotificationsEnabled = true;
-  UAirship.push.defaultPresentationOptions = UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound;
-  
   NSDictionary *initProps = [self prepareInitialProps];
-  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"RtnGimbalAirshipAdapterExample", initProps);
+  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"RtnGimbalAirshipAdapterExample", initProps, RCTTurboModuleEnabled());
 
   if (@available(iOS 13.0, *)) {
     rootView.backgroundColor = [UIColor systemBackgroundColor];

@@ -140,19 +140,23 @@ import type { Spec as GimbalAirshipAdapterSpec } from './GimbalAirshipAdapter';
  */
 export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
   /**
-   * Sets the Gimbal API key.
-   * @param apiKey The Gimbal API key.
+   * Saves your Gimbal API key without explicitly starting the adapter. If you want to call adapter
+   * methods on Androids while the adapter is off, you must first pass in your API key using this
+   * method.
+   * @param apiKey The Gimbal API key
    */
-  setGimbalApiKey(apiKey: string) {
-    return GimbalAirshipAdapterModule.setGimbalApiKey(apiKey);
+  setApiKey(apiKey: string): void {
+    return GimbalAirshipAdapterModule.setApiKey(apiKey);
   },
 
   /**
    * Starts the adapter.
-   * @return A promise with the result.
+   * @param apiKey The Gimbal API key.
+   * @return A promise with a boolean result indicating whether the adapter has successfully started
+   * or not.
    */
-  start(): Promise<boolean> {
-    return GimbalAirshipAdapterModule.start();
+  start(apiKey: string): Promise<boolean> {
+    return GimbalAirshipAdapterModule.start(apiKey);
   },
 
   /**
@@ -194,6 +198,30 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
    */
   getUserConsent(consentType: ConsentType): Promise<ConsentState> {
     return GimbalAirshipAdapterModule.getUserConsent(consentType);
+  },
+
+  /**
+   * Enables / disables the creation of an Airship CustomEvent upon place entry.Tracking is enabled
+   * by default.
+   */
+  setShouldTrackCustomEntryEvents(shouldTrack: boolean): void {
+    GimbalAirshipAdapterModule.setShouldTrackCustomEntryEvents(shouldTrack);
+  },
+
+  /**
+   * Enables / disables the creation of an Airship CustomEvent upon place exit. Tracking is enabled
+   * by default.
+   */
+  setShouldTrackCustomExitEvents(shouldTrack: boolean): void {
+    GimbalAirshipAdapterModule.setShouldTrackCustomExitEvents(shouldTrack);
+  },
+
+  /**
+   * Enables / disables the creation of an Airship RegionEvent upon place entry and exit. Tracking
+   * is disabled by default, since RegionEvents are deprecated in favor of CustomEvents.
+   */
+  setShouldTrackRegionEvents(shouldTrack: boolean): void {
+    GimbalAirshipAdapterModule.setShouldTrackRegionEvents(shouldTrack);
   },
 
   /**

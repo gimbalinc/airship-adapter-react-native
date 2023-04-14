@@ -1,26 +1,23 @@
 #import "GimbalService.h"
 #import <Foundation/Foundation.h>
-//#import "GimbalAirshipAdapter/GimbalAirshipAdapter-umbrella.h"
+#import <Gimbal/Gimbal.h>
 @import GimbalAirshipAdapter;
-
-#if __has_include("AirshipLib.h")
-#import "AirshipLib.h"
-#else
-@import AirshipKit;
-#endif
 
 @interface GimbalService() <GMBLPlaceManagerDelegate>
 @property (nonatomic, strong) GMBLPlaceManager *placeManager;
-//@property (nonatomic) GMBLDeviceAttributesManager * deviceAttributesManager;
+@property (nonatomic, strong) NSUserDefaults *defaults;
 @end
 
 NSString *const GimbalSource = @"Gimbal";
 
 // MARK: NSUserDefault Keys
-// TODO: Use Custom Defaults Suite
-NSString *const GimbalAlertViewKey = @"gmbl_hide_bt_power_alert_view";
-NSString *const GimbalServiceStartedKey = @"com.urbanairship.gimbal.started";
-NSString *const GimbalServiceApiKey = @"com.urbanairship.gimbal.api_key";
+NSString *const GimbalDidSetCustomEntryTrackingPreferenceKey =
+    @"com.gimbal.rtn.airship.adapter.didset.custom.entry.tracking";
+NSString *const GimbalDidSetCustomExitTrackingPreferenceKey =
+    @"com.gimbal.rtn.airship.adapter.didset.custom.exit.tracking";
+NSString *const GimbalDidSetRegionTrackingPreferenceKey =
+    @"com.gimbal.rtn.airship.adapter.didset.region.tracking";
+NSString *const defaultsSuiteName = @"com.gimbal.rtn.airship.adapter.suite.name";
 
 @implementation GimbalService
 
@@ -34,44 +31,27 @@ static id _sharedObject = nil;
     return _sharedObject;
 }
 
-//+ (void)load {
-//    [[NSNotificationCenter defaultCenter] addObserver:[GimbalService class]
-//                                             selector:@selector(handleAirshipReady)
-//                                                 name:@"com.urbanairship.airship_ready"
-//                                               object:nil];
-//}
-
-//+ (void)handleAirshipReady {
-//    [[GimbalService shared] updateDeviceAttributes];
-//}
-
 // MARK: Lifecycle
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        if (self.gimbalApiKey) {
-            [Gimbal setAPIKey:self.gimbalApiKey options:nil];
+        _defaults = [[NSUserDefaults alloc] initWithSuiteName:defaultsSuiteName];
+        
+        AirshipAdapter.shared.delegate = self;
+        
+        if (![self didSetCustomEntryTrackingPreference]) {
+            AirshipAdapter.shared.shouldTrackCustomEntryEvents = true;
         }
-
-//        self.placeManager = [[GMBLPlaceManager alloc] init];
-//        self.placeManager.delegate = self;
-//        self.deviceAttributesManager = [[GMBLDeviceAttributesManager alloc] init];
-//        AirshipAdapter.shared.delegate = self;
-
-        // Hide the power alert by default
-        if (![[NSUserDefaults standardUserDefaults] valueForKey:GimbalAlertViewKey]) {
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:GimbalAlertViewKey];
+        
+        if (![self didSetCustomExitTrackingPreference]) {
+            AirshipAdapter.shared.shouldTrackCustomExitEvents = true;
         }
-
-//        [[NSNotificationCenter defaultCenter] addObserver:self
-//                                                 selector:@selector(updateDeviceAttributes)
-//                                                     name:UAChannel.channelCreatedEvent
-//                                                   object:nil];
-
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:GimbalServiceStartedKey]) {
-            [self start];
+        
+        if (![self didSetRegionEventTrackingPreference]) {
+            AirshipAdapter.shared.shouldTrackRegionEvents = false;
         }
+        [AirshipAdapter.shared restore];
     }
 
     return self;
@@ -83,90 +63,62 @@ static id _sharedObject = nil;
 
 // MARK: Setters
 
-- (void)setGimbalApiKey:(NSString *)gimbalApiKey {
-
-    if (gimbalApiKey) {
-        [[NSUserDefaults standardUserDefaults] setValue:gimbalApiKey forKey:GimbalServiceApiKey];
-//        [Gimbal setAPIKey:gimbalApiKey options:nil];
-    } else {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:GimbalServiceApiKey];
-    }
-}
-
 - (void)setBluetoothPoweredOffAlertEnabled:(BOOL)bluetoothPoweredOffAlertEnabled {
-    [[NSUserDefaults standardUserDefaults] setBool:!bluetoothPoweredOffAlertEnabled
-                                            forKey:GimbalAlertViewKey];
+    [AirshipAdapter.shared setBluetoothPoweredOffAlertEnabled:bluetoothPoweredOffAlertEnabled];
 }
 
 // MARK: Getters
 
-- (NSString *)gimbalApiKey {
-    return [[NSUserDefaults standardUserDefaults] valueForKey:GimbalServiceApiKey];
-}
-
-- (BOOL)isBluetoothPoweredOffAlertEnabled {
-    return ![[NSUserDefaults standardUserDefaults] boolForKey:GimbalAlertViewKey];
-}
-
 - (BOOL)isStarted {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:GimbalServiceStartedKey] && [Gimbal isStarted];
+    return [AirshipAdapter.shared isStarted];
+}
+
+-(void)setShouldTrackCustomEntryEvents:(BOOL)shouldTrack {
+    [self.defaults setBool:true forKey:GimbalDidSetCustomEntryTrackingPreferenceKey];
+    AirshipAdapter.shared.shouldTrackCustomEntryEvents = shouldTrack;
+}
+
+-(void)setShouldTrackCustomExitEvents:(BOOL)shouldTrack {
+    [self.defaults setBool:true forKey:GimbalDidSetCustomExitTrackingPreferenceKey];
+    AirshipAdapter.shared.shouldTrackCustomExitEvents = shouldTrack;
+}
+
+-(void)setShouldTrackRegionEvents:(BOOL)shouldTrack {
+    [self.defaults setBool:true forKey:GimbalDidSetRegionTrackingPreferenceKey];
+    AirshipAdapter.shared.shouldTrackRegionEvents = shouldTrack;
 }
 
 // MARK: Gimbal Methods
 
-- (void)start {
-//    [Gimbal start];
+-(void)setApiKey:(NSString *)apiKey {
+    [Gimbal setAPIKey:apiKey options:nil];
+}
 
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:GimbalServiceStartedKey];
-    NSString *apiKey = [self gimbalApiKey];
-    if (!apiKey) {
-        return;
-    }
-    
-    AirshipAdapter.shared.delegate = self;
-    [AirshipAdapter.shared start:[self gimbalApiKey]];
-    
-
-//    [self updateDeviceAttributes];
-//    UA_LDEBUG(@"Started Gimbal Adapter. Gimbal application instance identifier: %@", [Gimbal applicationInstanceIdentifier]);
+- (BOOL)start:(NSString *)apiKey {
+    [AirshipAdapter.shared start:apiKey];
+    return [AirshipAdapter.shared isStarted];
 }
 
 - (void)stop {
-    [Gimbal stop];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:GimbalServiceStartedKey];
-//    UA_LDEBUG(@"Stopped Gimbal Adapter.");
+    [AirshipAdapter.shared stop];
 }
 
-//- (void)updateDeviceAttributes {
-//    NSMutableDictionary *deviceAttributes = [NSMutableDictionary dictionary];
-//
-//    if ([self.deviceAttributesManager getDeviceAttributes].count) {
-//        [deviceAttributes addEntriesFromDictionary:[self.deviceAttributesManager getDeviceAttributes]];
-//    }
-//
-//    [deviceAttributes setValue:[UAirship contact].namedUserID forKey:@"ua.nameduser.id"];
-//    [deviceAttributes setValue:[UAirship channel].identifier forKey:@"ua.channel.id"];
-//
-//    if (deviceAttributes.count) {
-//        [self.deviceAttributesManager setDeviceAttributes:deviceAttributes];
-//        UA_LDEBUG(@"Set Gimbal Device Attributes: %@", [deviceAttributes description]);
-//    }
-//
-//    UAAssociatedIdentifiers *identifiers = [UAirship.analytics currentAssociatedDeviceIdentifiers];
-//    [identifiers setIdentifier:[Gimbal applicationInstanceIdentifier] forKey:@"com.urbanairship.gimbal.aii"];
-//    [UAirship.analytics associateDeviceIdentifiers:identifiers];
-//}
+// MARK: misc
+-(BOOL)didSetCustomEntryTrackingPreference {
+    return [self.defaults boolForKey:GimbalDidSetCustomEntryTrackingPreferenceKey];
+}
+
+-(BOOL)didSetCustomExitTrackingPreference {
+    return [self.defaults boolForKey:GimbalDidSetCustomExitTrackingPreferenceKey];
+}
+
+-(BOOL)didSetRegionEventTrackingPreference {
+    return [self.defaults boolForKey:GimbalDidSetRegionTrackingPreferenceKey];
+}
 
 // MARK: PlaceManager Delegate Methods
 
 - (void)placeManager:(GMBLPlaceManager *)manager didBeginVisit:(GMBLVisit *)visit {
-//    UA_LDEBUG(@"Entered a Gimbal Place: %@ on the following date: %@", visit.place.name, visit.arrivalDate);
-//    UARegionEvent *regionEvent = [UARegionEvent regionEventWithRegionID:visit.place.identifier
-//                                                                 source:GimbalSource
-//                                                          boundaryEvent:UABoundaryEventEnter];
-
-//    [UAirship.analytics addEvent:regionEvent];
-
     id strongDelegate = self.delegate;
     if ([strongDelegate respondsToSelector:@selector(placeManager:didBeginVisit:)]) {
         [strongDelegate placeManager:manager didBeginVisit:visit];
@@ -177,12 +129,6 @@ static id _sharedObject = nil;
     if (!self.isStarted) {
         return;
     }
-
-//    UA_LDEBUG(@"Exited a Gimbal Place: %@ Entrance date:%@ Exit Date:%@", visit.place.name, visit.arrivalDate, visit.departureDate);
-//    UARegionEvent *regionEvent = [UARegionEvent regionEventWithRegionID:visit.place.identifier
-//                                                                 source:GimbalSource
-//                                                          boundaryEvent:UABoundaryEventExit];
-//    [UAirship.analytics addEvent:regionEvent];
 
     id strongDelegate = self.delegate;
     if ([strongDelegate respondsToSelector:@selector(placeManager:didEndVisit:)]) {
