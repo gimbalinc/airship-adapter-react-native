@@ -11,7 +11,6 @@ with Airship Custom Events for React Native apps.
 - [Airship General Documentation](https://docs.airship.com/platform/)
 - [Airship and Gimbal Integration guide](https://docs.airship.com/partners/gimbal/)
 
-
 ## Installation
 
 ### Prerequisites
@@ -24,6 +23,8 @@ Also ensure that you have an Airship project already set up, and note your app s
 
 This adapter is meant to work alongside an Airship dependency, which at the moment would be `@ua/react-native-airship`.
 The adapter primarily manages the creation and propagation of Airship CustomEvents and RegionEvents, but does not initialize Airship on its own.
+
+If push notifications are required, ensure that you've performed the necessary steps required for your platform. For iOS, make sure to change the app bundle ID to one registered with push capabilities. For Android, change the application ID to one registered with Firebase and add the necessary configuration file to the project.
 
 ### Add the plugin
 
@@ -62,22 +63,23 @@ If granted, Gimbal will use fine, coarse and background location permissions, as
 
 ```xml
 <key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Let this sample app trigger Gimbal beacon-based events</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Let this sample app trigger Gimbal location-based events</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Let this sample app trigger Gimbal location-based events</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Let this sample app trigger Gimbal location-based events while the app is in use</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>location</string>
-		<string>processing</string> <!-- required by Airship -->
-		<string>remote-notification</string> <!-- required for notifications -->
-	</array>
+  <string>Let this sample app trigger Gimbal beacon-based events</string>
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>Let this sample app trigger Gimbal location-based events</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>Let this sample app trigger Gimbal location-based events</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Let this sample app trigger Gimbal location-based events while the app is in use</string>
+  <key>UIBackgroundModes</key>
+  <array>
+    <string>location</string>
+    <string>processing</string> <!-- required by Airship -->
+    <string>remote-notification</string> <!-- required for notifications -->
+  </array>
 ```
 
 ### Android
+
 ```xml
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
