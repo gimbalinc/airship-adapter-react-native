@@ -25,6 +25,8 @@ Also ensure that you have an Airship project already set up, and note your app s
 This adapter is meant to work alongside an Airship dependency, which at the moment would be `@ua/react-native-airship`.
 The adapter primarily manages the creation and propagation of Airship CustomEvents and RegionEvents, but does not initialize Airship on its own.
 
+If push notifications are required, ensure that you've performed the necessary steps required for your platform. For iOS, make sure to change the app bundle ID to one registered with push capabilities. For Android, change the application ID to one registered with Firebase and add the necessary configuration file to the project.
+
 ### Add the plugin
 
 ```sh
