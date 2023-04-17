@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { FlatList, View, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AdapterEventUtils from '../../services/AdapterEvents/AdapterEventUtils';
 import type AdapterEvent from '../../services/AdapterEvents/AdapterEvent';
@@ -10,18 +10,19 @@ import {
 } from 'rtn-gimbal-airship-adapter';
 import GlobalStyles from '../../global/GlobalStyles';
 
-const dummyEvent: AdapterEvent = {
-  description: 'loading events',
-  regionEvent: '',
-};
-
 const KEY_EVENTS = 'adapterEventsKey';
 
 interface EventTranscriptContainerProps {}
 
 interface EventTranscriptContainerState {
-  events: [AdapterEvent];
+  events: AdapterEvent[];
 }
+
+const ListItem = ({ event }: { event: AdapterEvent }) => (
+  <Text style={GlobalStyles.rowLabel}>{event.description}</Text>
+);
+
+const ListHeader = () => <Text style={GlobalStyles.header}>Events</Text>;
 
 export default class EventTranscriptContainer extends Component<
   EventTranscriptContainerProps,
@@ -31,7 +32,7 @@ export default class EventTranscriptContainer extends Component<
     super(props);
 
     this.state = {
-      events: [dummyEvent],
+      events: [],
     };
 
     this.saveEvent = this.saveEvent.bind(this);
@@ -71,7 +72,6 @@ export default class EventTranscriptContainer extends Component<
     const updatedJsonEvents = JSON.stringify(events);
     AsyncStorage.setItem(KEY_EVENTS, updatedJsonEvents)
       .then(() => {
-        console.log('TESTEST setting events');
         this.setState({ events });
       })
       .catch((error) => {
@@ -81,11 +81,15 @@ export default class EventTranscriptContainer extends Component<
   }
 
   render() {
-    let lastEvent =
-      this.state.events[this.state.events.length - 1] ?? dummyEvent;
     return (
       <View style={GlobalStyles.cellContainer}>
-        <Text style={GlobalStyles.rowLabel}>{lastEvent.description}</Text>
+        <FlatList
+          contentContainerStyle={GlobalStyles.contentContainer}
+          data={this.state.events}
+          renderItem={({ item }) => <ListItem event={item} />}
+          keyExtractor={(item: AdapterEvent) => item.regionEvent}
+          ListHeaderComponent={ListHeader}
+        />
       </View>
     );
   }
