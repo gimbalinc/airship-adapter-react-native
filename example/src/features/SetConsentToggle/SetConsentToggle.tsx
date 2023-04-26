@@ -11,6 +11,10 @@ const SetConsentToggle = () => {
   const [placesConsent, setPlacesConsent] = useState(ConsentState.Unknown);
 
   useEffect(() => {
+    if (!GimbalAirshipAdapter.isStarted) {
+      return;
+    }
+
     GimbalAirshipAdapter.getUserConsent(ConsentType.Places).then(
       (consentState) => {
         console.log(

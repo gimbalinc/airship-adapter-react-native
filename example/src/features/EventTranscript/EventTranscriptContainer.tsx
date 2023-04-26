@@ -52,7 +52,6 @@ export default class EventTranscriptContainer extends Component<
       }
     });
 
-    console.log('testest transcript mounting');
     GimbalAirshipAdapter.addListener(RegionEventType.Enter, (event) => {
       const newEvent = AdapterEventUtils.regionEventToAdapterEvent(event);
       console.log(`newEvent: ${newEvent.description}`);
