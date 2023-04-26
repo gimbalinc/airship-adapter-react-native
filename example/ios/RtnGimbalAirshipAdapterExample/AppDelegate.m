@@ -64,25 +64,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   
-  [self registerForNotifications:application];
-  
   return YES;
-}
-
-- (void)registerForNotifications:(UIApplication *)application
-{
-    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    center.delegate = self;
-    
-    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert)
-                          completionHandler:^(BOOL granted, NSError * _Nullable error)
-     {
-         if(error){
-             NSLog(@"Error registering for UserNotifications %@", error);
-         } else {
-             NSLog(@"Registered for UserNotifications");
-         }
-     }];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
