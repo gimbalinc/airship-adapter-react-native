@@ -37,8 +37,8 @@
 	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Let this sample app trigger Gimbal beacon-based events</string>
-  <key>NSBluetoothPeripheralUsageDescription</key>
-  <string>Let this sample app trigger Gimbal beacon-based events</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Let this sample app trigger Gimbal beacon-based events</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Let this sample app trigger Gimbal location-based events</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -66,5 +66,12 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>BrandonText-Bold.otf</string>
+		<string>BrandonText-Light.otf</string>
+		<string>BrandonText-Medium.otf</string>
+		<string>BrandonText-Regular.otf</string>
+	</array>
 </dict>
 </plist>
