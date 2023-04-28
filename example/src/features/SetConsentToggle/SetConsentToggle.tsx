@@ -17,9 +17,6 @@ const SetConsentToggle = () => {
 
     GimbalAirshipAdapter.getUserConsent(ConsentType.Places).then(
       (consentState) => {
-        console.log(
-          `SetConsentToggle useEffect, consentState: ${consentState}`
-        );
         setPlacesConsent(consentState);
       }
     );
@@ -41,7 +38,6 @@ const SetConsentToggle = () => {
     GimbalAirshipAdapter.getUserConsent(ConsentType.Places).then(
       (consentState) => {
         setPlacesConsent(consentState);
-        console.log(`handleConsentToggle consentState? ${consentState}`);
       }
     );
   };

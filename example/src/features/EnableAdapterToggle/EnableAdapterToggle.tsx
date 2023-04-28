@@ -13,9 +13,6 @@ const EnableAdapterToggle = ({ apiKey }: EnableToggleProps) => {
   useEffect(() => {
     (async () => {
       const isAdapterEnabled = await GimbalAirshipAdapter.isStarted();
-      console.log(
-        `EnableAdapterToggle useEffect, apiKey: ${apiKey}, isStarted: ${isAdapterEnabled}`
-      );
       setIsEnabled(isAdapterEnabled);
     })();
   }, [apiKey, isEnabled]);
@@ -24,13 +21,11 @@ const EnableAdapterToggle = ({ apiKey }: EnableToggleProps) => {
     if (switchValue) {
       GimbalAirshipAdapter.start(apiKey).then((isStarted) => {
         setIsEnabled(isStarted);
-        console.log(`handleAdapterToggle isStarted? ${isStarted}`);
       });
     } else {
       GimbalAirshipAdapter.stop();
       GimbalAirshipAdapter.isStarted().then((isStarted) => {
         setIsEnabled(isStarted);
-        console.log(`handleAdapterToggle isStarted? ${isStarted}`);
       });
     }
   };
