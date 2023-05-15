@@ -27,6 +27,15 @@ The adapter primarily manages the creation and propagation of Airship CustomEven
 
 If push notifications are required, ensure that you've performed the necessary steps required for your platform. For iOS, make sure to change the app bundle ID to one registered with push capabilities. For Android, change the application ID to one registered with Firebase and add the necessary configuration file to the project.
 
+### Creating Places
+
+If you do not already have Gimbal Places set up in your organization, you can do so in [Gimbal Manager > Places](https://manager.gimbal.com/places); there, add a new place by clicking the `+ New` button towards the top of the page. On the next page, enter a place `Name`, then either define your place using a geofence or an activated Gimbal Beacon. If using a geofence, you may either select an address, or import a pre-defined geofence. If using a Gimbal Beacon that has not been activated, first do so using the instructions [here](https://support.gimbal.com/hc/en-us/articles/220967687-How-do-I-activate-a-beacon-).
+
+
+### Airship Configuration
+
+See the documentation on Gimbal-Airship integrations [here](https://docs.airship.com/integrations/gimbal/).
+
 ### Add the plugin
 
 ```sh
