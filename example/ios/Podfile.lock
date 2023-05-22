@@ -697,10 +697,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: ad17efcfb2fa8f6bfd8ac0cf48d96668b8b28e0b
   React-runtimeexecutor: 8fa50b38df6b992c76537993a2b0553d3b088004
   ReactCommon: b49a4b00ca6d181ff74b17c12b2d59ac4add0bde
-<<<<<<< HEAD
   RNCAsyncStorage: b90b71f45b8b97be43bc4284e71a6af48ac9f547
-=======
->>>>>>> develop
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNPermissions: 55d79f5fed0955d9d063e956b976a0e432c55947
