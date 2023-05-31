@@ -57,7 +57,7 @@ GimbalAirshipAdapter.start(GIMBAL_API_KEY)
 ```
 
 Where `GIMBAL_API_KEY` is your api key as obtained from Gimbal Manager. Please note that your iOS and Android apps are
-managed separately in Gimbal Manager and so will have separate API keys.
+managed separately in Gimbal Manager and so will have separate API keys. If using the sample app, these keys must be provided in `App.tsx`.
 
 Once the adapter is started, it will automatically resume its last state when the app is restarted, including if started in the background.
 The API key and the started status are persisted between app starts -- you only need to call `start`  once.
