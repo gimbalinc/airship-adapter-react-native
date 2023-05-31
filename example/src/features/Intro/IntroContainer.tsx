@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Platform, View, Linking } from 'react-native';
 import type { Int32 } from 'react-native/Libraries/Types/CodegenTypes';
-import { request, PERMISSIONS } from 'react-native-permissions';
+import {
+  request,
+  PERMISSIONS,
+  PermissionStatus,
+} from 'react-native-permissions';
 import Airship from '@ua/react-native-airship';
 
 import SingleButtonPage from '../../components/SingleButtonPage/SingleButtonPage';
@@ -30,6 +34,10 @@ export default class IntroContainer extends Component<
 
     this.pageForIndex = this.pageForIndex.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.requestLocationPermissions =
+      this.requestLocationPermissions.bind(this);
+    this.requestBluetoothPermissions =
+      this.requestBluetoothPermissions.bind(this);
   }
 
   onClick() {
@@ -48,7 +56,18 @@ export default class IntroContainer extends Component<
             pageText="Notification permission is necessary in order to receive Airship push events; if you need this functionality, please grant the permission once the prompt appears."
             buttonText="OK"
             buttonCallback={() => {
-              Airship.push.enableUserNotifications();
+              Airship.push
+                .enableUserNotifications()
+                .then((result) => {
+                  console.log(
+                    `Requested notification permissions, result: ${result}`
+                  );
+                })
+                .catch((error) => {
+                  console.log(
+                    `Error while enabling notification permissions: ${error}`
+                  );
+                });
               this.onClick();
             }}
           />
@@ -59,11 +78,17 @@ export default class IntroContainer extends Component<
             pageText="Location permission is necessary in order to detect place entry and departure; if you need this functionality, please grant the permission once the prompt appears."
             buttonText="OK"
             buttonCallback={() => {
-              if (Platform.OS === 'ios') {
-                request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
-              } else if (Platform.OS === 'android') {
-                request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
-              }
+              this.requestLocationPermissions(Platform.OS)
+                .then((permissonStatus) => {
+                  console.log(
+                    `Requested Location permissions, result: ${permissonStatus}`
+                  );
+                })
+                .catch((error) => {
+                  console.log(
+                    `Error requesting Location permissions: ${error}`
+                  );
+                });
               this.onClick();
             }}
           />
@@ -85,11 +110,17 @@ export default class IntroContainer extends Component<
             pageText="Bluetooth permission is necessary to detect events for places defined using beacons: if you need this functionality, please grant the permission once the prompt appears."
             buttonText="OK"
             buttonCallback={() => {
-              if (Platform.OS === 'ios') {
-                request(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL);
-              } else if (Platform.OS === 'android') {
-                request(PERMISSIONS.ANDROID.BLUETOOTH_SCAN);
-              }
+              this.requestBluetoothPermissions(Platform.OS)
+                .then((permissonStatus) => {
+                  console.log(
+                    `Requested bluetooth permissions, result: ${permissonStatus}`
+                  );
+                })
+                .catch((error) => {
+                  console.log(
+                    `Error requesting bluetooth permissions: ${error}`
+                  );
+                });
               this.onClick();
             }}
           />
@@ -97,6 +128,22 @@ export default class IntroContainer extends Component<
       default:
         this.props.onPageFinish();
         return;
+    }
+  }
+
+  requestLocationPermissions(platform: string): Promise<PermissionStatus> {
+    if (platform === 'ios') {
+      return request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+    } else {
+      return request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+    }
+  }
+
+  requestBluetoothPermissions(platform: string): Promise<PermissionStatus> {
+    if (platform === 'ios') {
+      return request(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL);
+    } else {
+      return request(PERMISSIONS.ANDROID.BLUETOOTH_SCAN);
     }
   }
 
