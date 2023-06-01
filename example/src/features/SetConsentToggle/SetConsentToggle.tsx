@@ -44,7 +44,7 @@ const SetConsentToggle = () => {
 
   return (
     <View style={GlobalStyles.cellContainer}>
-      <Text style={GlobalStyles.rowLabel}>ConsentState: {placesConsent}</Text>
+      <Text style={GlobalStyles.text}>ConsentState: {placesConsent}</Text>
       <Switch
         trackColor={{ true: '#0d6a83', false: null }}
         onValueChange={handleConsentToggle}

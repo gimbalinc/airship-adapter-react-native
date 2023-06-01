@@ -35,6 +35,7 @@ export default class EventTranscriptContainer extends Component<
       events: [],
     };
 
+    this.renderSeparator = this.renderSeparator.bind(this);
     this.saveEvent = this.saveEvent.bind(this);
   }
 
@@ -65,6 +66,8 @@ export default class EventTranscriptContainer extends Component<
     });
   }
 
+  renderSeparator = () => <View style={GlobalStyles.tableSeparator} />;
+
   saveEvent(event: AdapterEvent) {
     let events = this.state.events;
     events.push(event);
@@ -88,6 +91,7 @@ export default class EventTranscriptContainer extends Component<
           renderItem={({ item }) => <ListItem event={item} />}
           keyExtractor={(item: AdapterEvent) => item.regionEvent}
           ListHeaderComponent={ListHeader}
+          ItemSeparatorComponent={this.renderSeparator}
         />
       </View>
     );

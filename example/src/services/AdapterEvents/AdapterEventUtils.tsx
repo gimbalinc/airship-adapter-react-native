@@ -15,7 +15,7 @@ const formattedTimestamp = () => {
     hour: '2-digit',
     minute: '2-digit',
   });
-  return `${nowMonthString} - ${nowDayString} ${nowHoursAndMinutes}`;
+  return `${nowMonthString}-${nowDayString} ${nowHoursAndMinutes}`;
 };
 
 const AdapterEventUtils: AdapterEventUtilsInterface = {

@@ -32,7 +32,7 @@ const EnableAdapterToggle = ({ apiKey }: EnableToggleProps) => {
 
   return (
     <View style={GlobalStyles.cellContainer}>
-      <Text style={GlobalStyles.rowLabel}>
+      <Text style={GlobalStyles.text}>
         {isEnabled ? 'Disable Adapter?' : 'Enable Adapter?'}
       </Text>
       <Switch
