@@ -32,7 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		001F1DC95A5F43C6AC6C0E40 /* BrandonText-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonText-Bold.otf"; path = "../assets/fonts/BrandonText-Bold.otf"; sourceTree = "<group>"; };
+		001F1DC95A5F43C6AC6C0E40 /* BrandonText-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonText-Bold.otf"; path = "../assets/fonts/BrandonText-Bold.otf"; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* RtnGimbalAirshipAdapterExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RtnGimbalAirshipAdapterExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* RtnGimbalAirshipAdapterExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RtnGimbalAirshipAdapterExampleTests.m; sourceTree = "<group>"; };
@@ -43,15 +43,15 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RtnGimbalAirshipAdapterExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RtnGimbalAirshipAdapterExample/main.m; sourceTree = "<group>"; };
 		152C56AC6598F19215611F4B /* Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests/Pods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
-		1C9D901CA7044E2BA901E23E /* BrandonText-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonText-Regular.otf"; path = "../assets/fonts/BrandonText-Regular.otf"; sourceTree = "<group>"; };
+		1C9D901CA7044E2BA901E23E /* BrandonText-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonText-Regular.otf"; path = "../assets/fonts/BrandonText-Regular.otf"; sourceTree = "<group>"; };
 		1CF7106873256942FBB63535 /* libPods-RtnGimbalAirshipAdapterExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RtnGimbalAirshipAdapterExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RtnGimbalAirshipAdapterExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DBF01FA97875637E8E48F62 /* libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RtnGimbalAirshipAdapterExample-RtnGimbalAirshipAdapterExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3A31B61F01947858A4BD407 /* BrandonText-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonText-Light.otf"; path = "../assets/fonts/BrandonText-Light.otf"; sourceTree = "<group>"; };
+		A3A31B61F01947858A4BD407 /* BrandonText-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonText-Light.otf"; path = "../assets/fonts/BrandonText-Light.otf"; sourceTree = "<group>"; };
 		A40A132C29A5772400D655C2 /* AirshipConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
 		A40A132E29A6DD2D00D655C2 /* RtnGimbalAirshipAdapterExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = RtnGimbalAirshipAdapterExample.entitlements; path = RtnGimbalAirshipAdapterExample/RtnGimbalAirshipAdapterExample.entitlements; sourceTree = "<group>"; };
 		A40A132F29A81E8200D655C2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = RtnGimbalAirshipAdapterExample/AppDelegate.m; sourceTree = "<group>"; };
-		BCCDD64DACC34C4896FB11CD /* BrandonText-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonText-Medium.otf"; path = "../assets/fonts/BrandonText-Medium.otf"; sourceTree = "<group>"; };
+		BCCDD64DACC34C4896FB11CD /* BrandonText-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonText-Medium.otf"; path = "../assets/fonts/BrandonText-Medium.otf"; sourceTree = "<group>"; };
 		C0ED4D84D1A4CE288B2A6A7C /* Pods-RtnGimbalAirshipAdapterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RtnGimbalAirshipAdapterExample.release.xcconfig"; path = "Target Support Files/Pods-RtnGimbalAirshipAdapterExample/Pods-RtnGimbalAirshipAdapterExample.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F0B57DDEEA5ADEA4D0EA3294 /* Pods-RtnGimbalAirshipAdapterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RtnGimbalAirshipAdapterExample.debug.xcconfig"; path = "Target Support Files/Pods-RtnGimbalAirshipAdapterExample/Pods-RtnGimbalAirshipAdapterExample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,7 +128,6 @@
 				1C9D901CA7044E2BA901E23E /* BrandonText-Regular.otf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -553,7 +552,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RtnGimbalAirshipAdapterExample/RtnGimbalAirshipAdapterExample.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ETG9R4M5P;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RtnGimbalAirshipAdapterExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
