@@ -93,20 +93,16 @@ PODS:
     - FlipperKit/Core
     - FlipperKit/FlipperKitNetworkPlugin
   - fmt (6.2.1)
-  - GimbalAirshipAdapter (2.1.1):
-    - Airship (~> 16.10)
+  - GimbalAirshipAdapter (2.2.0):
+    - Airship (~> 16.11.3)
     - GimbalXCFramework (~> 2.93)
   - GimbalXCFramework (2.93)
   - glog (0.3.5)
-  - hermes-engine (0.71.4):
-    - hermes-engine/Pre-built (= 0.71.4)
-  - hermes-engine/Pre-built (0.71.4)
+  - hermes-engine (0.71.6):
+    - hermes-engine/Pre-built (= 0.71.6)
+  - hermes-engine/Pre-built (0.71.6)
   - libevent (2.1.12)
   - OpenSSL-Universal (1.1.1100)
-  - Permission-BluetoothPeripheral (3.8.0):
-    - RNPermissions
-  - Permission-LocationWhenInUse (3.8.0):
-    - RNPermissions
   - RCT-Folly (2021.07.22.00):
     - boost
     - DoubleConversion
@@ -460,7 +456,7 @@ PODS:
   - RNScreens (2.18.1):
     - React-Core
   - rtn-gimbal-airship-adapter (1.0.0):
-    - GimbalAirshipAdapter (~> 2.1.1)
+    - GimbalAirshipAdapter (~> 2.2.0)
     - GimbalXCFramework
     - React-Core
   - SocketRocket (0.6.0)
@@ -498,8 +494,6 @@ DEPENDENCIES:
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - libevent (~> 2.1.12)
   - OpenSSL-Universal (= 1.1.1100)
-  - Permission-BluetoothPeripheral (from `../node_modules/react-native-permissions/ios/BluetoothPeripheral`)
-  - Permission-LocationWhenInUse (from `../node_modules/react-native-permissions/ios/LocationWhenInUse`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
@@ -575,10 +569,6 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   hermes-engine:
     :podspec: "../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec"
-  Permission-BluetoothPeripheral:
-    :path: "../node_modules/react-native-permissions/ios/BluetoothPeripheral"
-  Permission-LocationWhenInUse:
-    :path: "../node_modules/react-native-permissions/ios/LocationWhenInUse"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -657,7 +647,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Airship: c70eed50e429f97f5adb285423c7291fb7a032ae
   AirshipFrameworkProxy: 79d040ee3392b1627cc585ab7d03e5cf30b8dd33
-  boost: a7c83b31436843459a1961bfd74b96033dc77234
+  boost: 57d2868c099736d80fcd648bf211b4431e51a558
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: a83ceaa8a8581003a623facdb3c44f6d4f342ac5
@@ -672,15 +662,13 @@ SPEC CHECKSUMS:
   Flipper-RSocket: d9d9ade67cbecf6ac10730304bf5607266dd2541
   FlipperKit: cbdee19bdd4e7f05472a66ce290f1b729ba3cb86
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
-  GimbalAirshipAdapter: df868afe91fccec7c0fe99e30ec9a4e661214ecc
+  GimbalAirshipAdapter: 61ac418853d136eb5877f14e5dd823fa914f49fa
   GimbalXCFramework: efa7dd8cbdcb994aeef840d9607ed9f49251e79f
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
-  hermes-engine: a1f157c49ea579c28b0296bda8530e980c45bdb3
+  hermes-engine: b434cea529ad0152c56c7cb6486b0c4c0b23b5de
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
-  Permission-BluetoothPeripheral: 2d2d32c4651752655c19345abbb45ad15651f987
-  Permission-LocationWhenInUse: 1c80e4797ae587642a83125e80b86686cefeba53
-  RCT-Folly: 0080d0a6ebf2577475bda044aa59e2ca1f909cda
+  RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: 5c6fd63b03abb06947d348dadac51c93e3485bd8
   RCTTypeSafety: 1c66daedd66f674e39ce9f40782f0d490c78b175
   React: e11ca7cdc7aa4ddd7e6a59278b808cfe17ebbd9f
@@ -712,14 +700,14 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: b90b71f45b8b97be43bc4284e71a6af48ac9f547
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNPermissions: 215c54462104b3925b412b0fb3c9c497b21c358b
+  RNPermissions: 55d79f5fed0955d9d063e956b976a0e432c55947
   RNReanimated: c1b56d030d1616239861534d9adb531f8cffab68
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
-  rtn-gimbal-airship-adapter: a70a2aa2e4461b23158155eaaa35e1badf41134c
+  rtn-gimbal-airship-adapter: 0fb7f82132a1bc4ebf818adc1087f789d23d8794
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: ba09b6b11e6139e3df8229238aa794205ca6a02a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 0f52cad03501740ee2d11ad989094e6ac847ea12
+PODFILE CHECKSUM: 1b9c1c0d13926e58571cde216dbaf7e46a84cbcc
 
 COCOAPODS: 1.11.3
