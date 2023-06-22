@@ -22,8 +22,6 @@ const ListItem = ({ event }: { event: AdapterEvent }) => (
   <Text style={GlobalStyles.rowLabel}>{event.description}</Text>
 );
 
-const ListHeader = () => <Text style={GlobalStyles.header}>Events</Text>;
-
 export default class EventTranscriptContainer extends Component<
   EventTranscriptContainerProps,
   EventTranscriptContainerState
@@ -84,16 +82,17 @@ export default class EventTranscriptContainer extends Component<
 
   render() {
     return (
-      <View style={GlobalStyles.cellContainer}>
+      <>
+        <Text style={GlobalStyles.header}>Events</Text>
         <FlatList
+          bounces={false}
           contentContainerStyle={GlobalStyles.contentContainer}
           data={this.state.events}
           renderItem={({ item }) => <ListItem event={item} />}
           keyExtractor={(item: AdapterEvent) => item.regionEvent}
-          ListHeaderComponent={ListHeader}
           ItemSeparatorComponent={this.renderSeparator}
         />
-      </View>
+      </>
     );
   }
 }

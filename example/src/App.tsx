@@ -66,6 +66,7 @@ export default class AirshipSample extends Component<AppProps, AppState> {
   }
 
   apiKey() {
+    console.log(`using provided apiKey for platform ${Platform.OS}`);
     if (Platform.OS === 'ios') {
       return GIMBAL_API_KEY_IOS;
     } else {
@@ -83,13 +84,12 @@ export default class AirshipSample extends Component<AppProps, AppState> {
 
   bodyContainerComponent() {
     return (
-      <View style={GlobalStyles.contentContainer}>
+      <View style={{ flex: 1 }}>
         <View style={{ height: 30 }} />
         <Text style={GlobalStyles.header}>Gimbal Airship Adapter</Text>
         <View style={{ height: 30 }} />
         <Text style={GlobalStyles.text}>Gimbal API Key: {this.apiKey()}</Text>
         <EnableAdapterToggle apiKey={this.apiKey()} />
-        <View style={{ height: 30 }} />
         <SetConsentToggle />
         <EventTranscriptContainer />
       </View>

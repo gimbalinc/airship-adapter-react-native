@@ -25,6 +25,7 @@ const EnableAdapterToggle = ({ apiKey }: EnableToggleProps) => {
     } else {
       GimbalAirshipAdapter.stop();
       GimbalAirshipAdapter.isStarted().then((isStarted) => {
+        console.log(`is adapter enabled? ${isStarted}`);
         setIsEnabled(isStarted);
       });
     }
