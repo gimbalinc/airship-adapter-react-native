@@ -21,6 +21,11 @@ const EnableAdapterToggle = ({ apiKey }: EnableToggleProps) => {
     if (switchValue) {
       GimbalAirshipAdapter.start(apiKey).then((isStarted) => {
         setIsEnabled(isStarted);
+        if (!isStarted) {
+          console.log(
+            'GimbalAirshipAdapter unable to start, please check that your airship credentials are present in either airshipconfig.properties or AirshipConfig.plist'
+          );
+        }
       });
     } else {
       GimbalAirshipAdapter.stop();
