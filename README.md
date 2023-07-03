@@ -4,6 +4,7 @@ The Gimbal Airship Adapter is a React Native dependency that integrates Gimbal P
 with Airship Custom Events for React Native apps.
 
 ## Resources
+
 - [Gimbal Developer Guide](https://gimbal.com/doc/android/v4/devguide.html)
 - [Gimbal Manager Portal](https://manager.gimbal.com)
 - [Airship React Native SDK](https://github.com/urbanairship/react-native-airship)
@@ -26,6 +27,15 @@ The adapter primarily manages the creation and propagation of Airship CustomEven
 
 If push notifications are required, ensure that you've performed the necessary steps required for your platform. For iOS, make sure to change the app bundle ID to one registered with push capabilities. For Android, change the application ID to one registered with Firebase and add the necessary configuration file to the project.
 
+### Creating Places
+
+If you do not already have Gimbal Places set up in your organization, you can do so in [Gimbal Manager > Places](https://manager.gimbal.com/places); there, add a new place by clicking the `+ New` button towards the top of the page. On the next page, enter a place `Name`, then either define your place using a geofence or an activated Gimbal Beacon. If using a geofence, you may either select an address, or import a pre-defined geofence. If using a Gimbal Beacon that has not been activated, first do so using the instructions [here](https://support.gimbal.com/hc/en-us/articles/220967687-How-do-I-activate-a-beacon-).
+
+
+### Airship Configuration
+
+See the documentation on Gimbal-Airship integrations [here](https://docs.airship.com/integrations/gimbal/).
+
 ### Add the plugin
 
 ```sh
@@ -47,7 +57,7 @@ GimbalAirshipAdapter.start(GIMBAL_API_KEY)
 ```
 
 Where `GIMBAL_API_KEY` is your api key as obtained from Gimbal Manager. Please note that your iOS and Android apps are
-managed separately in Gimbal Manager and so will have separate API keys.
+managed separately in Gimbal Manager and so will have separate API keys. If using the sample app, these keys must be provided in `App.tsx`.
 
 Once the adapter is started, it will automatically resume its last state when the app is restarted, including if started in the background.
 The API key and the started status are persisted between app starts -- you only need to call `start`  once.
@@ -86,6 +96,7 @@ If granted, Gimbal will use fine, coarse and background location permissions, as
 ```
 
 ## Event Tracking
+
 The adapter can be configured to track Airship Events when Gimbal Place Events are triggered. This tracking can be enabled or disabled as shown:
 
 ```js

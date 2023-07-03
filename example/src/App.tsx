@@ -7,250 +7,101 @@
 
 import {
   GimbalAirshipAdapter,
-  ConsentType,
-  ConsentState,
-  RegionEventType,
   ConsentRequirement,
 } from 'rtn-gimbal-airship-adapter';
-
 import React, { Component } from 'react';
+import { Platform, Text, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Switch,
-  ScrollView,
-} from 'react-native';
+import GlobalStyles from './global/GlobalStyles';
 
-import Airship, { EventType } from '@ua/react-native-airship';
+import EnableAdapterToggle from './features/EnableAdapterToggle/EnableAdapterToggle';
+import SetConsentToggle from './features/SetConsentToggle/SetConsentToggle';
+import EventTranscriptContainer from './features/EventTranscript/EventTranscriptContainer';
+import IntroContainer from './features/Intro/IntroContainer';
 
-const GIMBAL_API_KEY = 'YOUR_API_KEY';
-
-const styles = StyleSheet.create({
-  backgroundContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#E0A500',
-  },
-  contentContainer: {
-    paddingVertical: 20,
-    alignItems: 'center',
-    backgroundColor: '#E0A500',
-  },
-  cellContainer: {
-    flex: 0,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#E0A500',
-    marginTop: 15,
-    marginRight: 10,
-    marginLeft: 10,
-    marginBottom: 10,
-  },
-  text: {
-    fontSize: 16,
-    color: '#0d6a83',
-    textAlign: 'center',
-    padding: 10,
-  },
-  rowLabel: {
-    flexDirection: 'row',
-    color: '#0d6a83',
-    fontSize: 16,
-    marginRight: 10,
-  },
-});
+const GIMBAL_API_KEY_IOS = 'YOUR_GIMBAL_IOS_API_KEY';
+const GIMBAL_API_KEY_DROID = 'YOUR_GIMBAL_ANDROID_API_KEY';
+const KEY_DID_SHOW_INTRO = 'didShowIntroKey';
 
 interface AppProps {}
 
 interface AppState {
   channelId: string | null | undefined;
   isStarted: boolean;
-  placesConsent: ConsentState | null;
   gdprConsentRequirement: ConsentRequirement | null;
+  shouldShowIntro: boolean;
 }
 
 export default class AirshipSample extends Component<AppProps, AppState> {
   constructor(props: any) {
     super(props);
 
-    GimbalAirshipAdapter.setApiKey(GIMBAL_API_KEY);
-
     this.state = {
       channelId: '',
       isStarted: false,
-      placesConsent: null,
       gdprConsentRequirement: null,
+      shouldShowIntro: false,
     };
 
-    this.handleStartAdapter = this.handleStartAdapter.bind(this);
-    this.handlePlacesConsent = this.handlePlacesConsent.bind(this);
-  }
-
-  handleStartAdapter(enabled: boolean) {
-    if (enabled) {
-      GimbalAirshipAdapter.start(GIMBAL_API_KEY).then((isStarted: boolean) => {
-        this.setState({ isStarted });
-      });
-    } else {
-      GimbalAirshipAdapter.stop();
-      GimbalAirshipAdapter.isStarted().then((isStarted: boolean) => {
-        this.setState({ isStarted });
-      });
-    }
-  }
-
-  handlePlacesConsent(enabled: boolean) {
-    if (enabled) {
-      GimbalAirshipAdapter.setUserConsent(
-        ConsentType.Places,
-        ConsentState.Granted
-      );
-    } else {
-      GimbalAirshipAdapter.setUserConsent(
-        ConsentType.Places,
-        ConsentState.Refused
-      );
-    }
-
-    GimbalAirshipAdapter.getUserConsent(ConsentType.Places).then((consent) => {
-      this.setState({ placesConsent: consent });
-    });
+    this.apiKey = this.apiKey.bind(this);
+    this.introContainerComponent = this.introContainerComponent.bind(this);
+    this.bodyContainerComponent = this.bodyContainerComponent.bind(this);
   }
 
   componentDidMount() {
+    GimbalAirshipAdapter.setApiKey(this.apiKey());
+
+    AsyncStorage.getItem(KEY_DID_SHOW_INTRO).then((didShowIntro) => {
+      if (!didShowIntro) {
+        AsyncStorage.setItem(KEY_DID_SHOW_INTRO, 'true');
+        this.setState({ shouldShowIntro: true });
+      }
+    });
+
     // by default, custom entry and custom exit events are enabled, and region events are disabled
     // GimbalAirshipAdapter.setShouldTrackCustomEntryEvents(true);
     // GimbalAirshipAdapter.setShouldTrackCustomExitEvents(true);
     // GimbalAirshipAdapter.setShouldTrackRegionEvents(false);
-
-    GimbalAirshipAdapter.isStarted().then((isStarted) => {
-      console.log(`GimbalAirshipAdapter started? ${isStarted}`);
-      this.setState({ isStarted });
-    });
-
-    GimbalAirshipAdapter.getGdprConsentRequirement().then(
-      (gdprConsentRequirement) => {
-        this.setState({ gdprConsentRequirement });
-      }
-    );
-
-    GimbalAirshipAdapter.getUserConsent(ConsentType.Places).then((consent) => {
-      this.setState({ placesConsent: consent });
-    });
-
-    Airship.push.enableUserNotifications().then((isEnabled) => {
-      console.log(`Airship push enabled? ${isEnabled}`);
-    });
-
-    Airship.channel.getChannelId().then((channelId: any) => {
-      console.log(`Airship channelId: ${channelId}`);
-      this.setState({ channelId });
-    });
-
-    Airship.addListener(
-      EventType.ChannelCreated,
-      (event: { channelId: any }) => {
-        this.setState({ channelId: event.channelId });
-      }
-    );
-
-    GimbalAirshipAdapter.addListener(RegionEventType.Enter, (event) => {
-      console.log('region enter:', JSON.stringify(event));
-    });
-
-    GimbalAirshipAdapter.addListener(RegionEventType.Exit, (event) => {
-      console.log('region exit:', JSON.stringify(event));
-    });
   }
 
-  render() {
-    return (
-      <View style={styles.backgroundContainer}>
-        <ScrollView contentContainerStyle={styles.contentContainer}>
-          <Image
-            style={{
-              width: 300,
-              height: 38,
-              marginTop: 50,
-              alignItems: 'center',
-            }}
-            source={require('../img/urban-airship-sidebyside.png')}
-          />
-          <View style={{ height: 75 }} />
-          <EnableGimbalAdapter
-            isStarted={this.state.isStarted}
-            handleStartAdapter={this.handleStartAdapter}
-          />
-          <View>
-            <Text style={styles.text}>
-              Airship Channel ID {'\n'} {this.state.channelId}
-            </Text>
-          </View>
+  apiKey() {
+    console.log(`using provided apiKey for platform ${Platform.OS}`);
+    if (Platform.OS === 'ios') {
+      return GIMBAL_API_KEY_IOS;
+    } else {
+      return GIMBAL_API_KEY_DROID;
+    }
+  }
 
-          <View style={{ height: 75 }} />
-          <PlacesConsentAdapter
-            placesConsent={this.state.placesConsent}
-            handlePlacesConsent={this.handlePlacesConsent}
-          />
-          <View>
-            <Text style={styles.text}>
-              GDPR Consent Requirement {this.state.gdprConsentRequirement}
-            </Text>
-            <Text style={styles.text}>
-              Places Consent {this.state.placesConsent}
-            </Text>
-          </View>
-        </ScrollView>
+  introContainerComponent() {
+    return (
+      <IntroContainer
+        onPageFinish={() => this.setState({ shouldShowIntro: false })}
+      />
+    );
+  }
+
+  bodyContainerComponent() {
+    return (
+      <View style={{ flex: 1 }}>
+        <View style={{ height: 30 }} />
+        <Text style={GlobalStyles.header}>Gimbal Airship Adapter</Text>
+        <View style={{ height: 30 }} />
+        <Text style={GlobalStyles.text}>Gimbal API Key: {this.apiKey()}</Text>
+        <EnableAdapterToggle apiKey={this.apiKey()} />
+        <SetConsentToggle />
+        <EventTranscriptContainer />
       </View>
     );
   }
-}
 
-interface EnableGimbalAdapterState {}
-interface EnableGimbalAdapterProps {
-  handleStartAdapter: (enabled: boolean) => void;
-  isStarted: boolean;
-}
-class EnableGimbalAdapter extends Component<
-  EnableGimbalAdapterProps,
-  EnableGimbalAdapterState
-> {
   render() {
     return (
-      <View style={styles.cellContainer}>
-        <Text style={styles.rowLabel}>Enable Gimbal Adapter</Text>
-        <Switch
-          trackColor={{ true: '#0d6a83', false: null }}
-          onValueChange={(value) => this.props.handleStartAdapter(value)}
-          value={this.props.isStarted}
-        />
-      </View>
-    );
-  }
-}
-
-interface PlacesConsentAdapterState {}
-interface PlacesConsentAdapterProps {
-  handlePlacesConsent: (enabled: boolean) => void;
-  placesConsent: ConsentState | null;
-}
-class PlacesConsentAdapter extends Component<
-  PlacesConsentAdapterProps,
-  PlacesConsentAdapterState
-> {
-  render() {
-    return (
-      <View style={styles.cellContainer}>
-        <Text style={styles.rowLabel}>Consent to Gimbal Places</Text>
-        <Switch
-          trackColor={{ true: '#0d6a83', false: null }}
-          onValueChange={(value) => this.props.handlePlacesConsent(value)}
-          value={this.props.placesConsent === ConsentState.Granted}
-        />
+      <View style={GlobalStyles.backgroundContainer}>
+        {this.state.shouldShowIntro
+          ? this.introContainerComponent()
+          : this.bodyContainerComponent()}
       </View>
     );
   }

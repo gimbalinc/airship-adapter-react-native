@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/BrandonText-Bold.otf",
+      "sha1": "3b993afcc8fbc2d674d1ae9a72f6a596af6abcf0"
+    },
+    {
+      "path": "assets/fonts/BrandonText-Light.otf",
+      "sha1": "7761cedcf391df097984f6253b19b286ebcf5cc6"
+    },
+    {
+      "path": "assets/fonts/BrandonText-Medium.otf",
+      "sha1": "3e3a50cc3a2af5aebcd400e6e69a88918e83ca20"
+    },
+    {
+      "path": "assets/fonts/BrandonText-Regular.otf",
+      "sha1": "522a98a0e80e89d37b709da274ad60874c55c392"
+    }
+  ]
+}
