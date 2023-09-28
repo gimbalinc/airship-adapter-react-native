@@ -19,6 +19,7 @@ import EnableAdapterToggle from './features/EnableAdapterToggle/EnableAdapterTog
 import SetConsentToggle from './features/SetConsentToggle/SetConsentToggle';
 import EventTranscriptContainer from './features/EventTranscript/EventTranscriptContainer';
 import IntroContainer from './features/Intro/IntroContainer';
+import Airship from '@ua/react-native-airship';
 
 const GIMBAL_API_KEY_IOS = 'YOUR_GIMBAL_IOS_API_KEY';
 const GIMBAL_API_KEY_DROID = 'YOUR_GIMBAL_ANDROID_API_KEY';
@@ -51,6 +52,7 @@ export default class AirshipSample extends Component<AppProps, AppState> {
 
   componentDidMount() {
     GimbalAirshipAdapter.setApiKey(this.apiKey());
+    GimbalAirshipAdapter.setAnalyticsId('your_analytics_id');
 
     AsyncStorage.getItem(KEY_DID_SHOW_INTRO).then((didShowIntro) => {
       if (!didShowIntro) {
@@ -58,6 +60,10 @@ export default class AirshipSample extends Component<AppProps, AppState> {
         this.setState({ shouldShowIntro: true });
       }
     });
+
+    Airship.channel.getChannelId().then((channelId) => {
+      console.log(`channel ID: ${channelId}`);
+    })
 
     // by default, custom entry and custom exit events are enabled, and region events are disabled
     // GimbalAirshipAdapter.setShouldTrackCustomEntryEvents(true);
