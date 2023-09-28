@@ -49,6 +49,14 @@
 -(void)setApiKey:(NSString *)apiKey;
 
 /**
+ * Associates a User Analytics Identifier with an application instance.  This may be used to
+ * enrich exported analytics events from Gimbal Manager.
+ *
+ * @param id - the User Analytics Identifier
+*/
+-(void)setAnalyticsId:(NSString *)id;
+
+/**
  * Starts the service.
  *
  * @return Boolean indicating whether or not the Adapter was started.
