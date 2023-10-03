@@ -10,6 +10,7 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;
 import com.gimbal.airship.AirshipAdapter;
+import com.gimbal.android.AnalyticsManager;
 import com.gimbal.android.Gimbal;
 import com.gimbal.android.PrivacyManager;
 import com.gimbal.android.Visit;
@@ -170,6 +171,11 @@ public class RtnGimbalAirshipAdapterModule extends RtnGimbalAirshipAdapterSpec {
   public void setShouldTrackRegionEvents(boolean shouldTrack) {
     editBooleanPreference(PREFERENCE_KEY_DID_SET_REGION_EVENT_PREFERENCE, true);
     airshipAdapter().setShouldTrackRegionEvent(shouldTrack);
+  }
+
+  @ReactMethod
+  public void setAnalyticsId(String id) {
+    AnalyticsManager.getInstance().setUserAnalyticsID(id);
   }
 
   @NonNull

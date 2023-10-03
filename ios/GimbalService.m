@@ -103,6 +103,10 @@ static id _sharedObject = nil;
     [AirshipAdapter.shared stop];
 }
 
+-(void)setAnalyticsId:(NSString *)id {
+    [[GMBLAnalyticsManager sharedInstance] setUserAnalyticsID:id];
+}
+
 // MARK: misc
 -(BOOL)didSetCustomEntryTrackingPreference {
     return [self.defaults boolForKey:GimbalDidSetCustomEntryTrackingPreferenceKey];

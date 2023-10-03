@@ -15,6 +15,7 @@ export interface Spec extends TurboModule {
   setShouldTrackCustomEntryEvents(shouldTrack: boolean): void;
   setShouldTrackCustomExitEvents(shouldTrack: boolean): void;
   setShouldTrackRegionEvents(shouldTrack: boolean): void;
+  setAnalyticsId(id: string): void;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>(

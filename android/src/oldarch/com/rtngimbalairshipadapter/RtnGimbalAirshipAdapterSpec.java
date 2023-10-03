@@ -21,7 +21,7 @@ abstract class RtnGimbalAirshipAdapterSpec extends ReactContextBaseJavaModule {
   public abstract void isStarted(Promise promise);
 
   public abstract void setApiKey(String apiKey);
-  
+
   public abstract void start(String apiKey, Promise promise);
 
   public abstract void stop();
@@ -37,4 +37,6 @@ abstract class RtnGimbalAirshipAdapterSpec extends ReactContextBaseJavaModule {
   public abstract void setShouldTrackCustomExitEvents(boolean shouldTrack);
 
   public abstract void setShouldTrackRegionEvents(boolean shouldTrack);
+
+  public abstract void setAnalyticsId(String id);
 }

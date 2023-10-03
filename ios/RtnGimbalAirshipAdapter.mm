@@ -103,6 +103,10 @@ RCT_EXPORT_METHOD(setShouldTrackRegionEvents:(BOOL)shouldTrack) {
     [[GimbalService shared] setShouldTrackRegionEvents:shouldTrack];
 }
 
+RCT_EXPORT_METHOD(setAnalyticsId:(NSString *)id) {
+    [[GimbalService shared] setAnalyticsId:id];
+}
+
 // MARK: Gimbal PlaceManagerDelegate
 
 - (void)placeManager:(GMBLPlaceManager *)manager didBeginVisit:(GMBLVisit *)visit {
