@@ -25,13 +25,19 @@ const GIMBAL_API_KEY_IOS = 'YOUR_GIMBAL_IOS_API_KEY';
 const GIMBAL_API_KEY_DROID = 'YOUR_GIMBAL_ANDROID_API_KEY';
 const KEY_DID_SHOW_INTRO = 'didShowIntroKey';
 
+const SHOULD_SHOW_INTRO_VALUES = {
+  unknown: 0,
+  true: 1,
+  false: 2,
+};
+
 interface AppProps {}
 
 interface AppState {
   channelId: string | null | undefined;
   isStarted: boolean;
   gdprConsentRequirement: ConsentRequirement | null;
-  shouldShowIntro: boolean;
+  shouldShowIntro: number;
 }
 
 export default class AirshipSample extends Component<AppProps, AppState> {
@@ -42,12 +48,13 @@ export default class AirshipSample extends Component<AppProps, AppState> {
       channelId: '',
       isStarted: false,
       gdprConsentRequirement: null,
-      shouldShowIntro: false,
+      shouldShowIntro: SHOULD_SHOW_INTRO_VALUES.unknown,
     };
 
     this.apiKey = this.apiKey.bind(this);
     this.introContainerComponent = this.introContainerComponent.bind(this);
     this.bodyContainerComponent = this.bodyContainerComponent.bind(this);
+    this.currentView = this.currentView.bind(this);
   }
 
   componentDidMount() {
@@ -57,13 +64,15 @@ export default class AirshipSample extends Component<AppProps, AppState> {
     AsyncStorage.getItem(KEY_DID_SHOW_INTRO).then((didShowIntro) => {
       if (!didShowIntro) {
         AsyncStorage.setItem(KEY_DID_SHOW_INTRO, 'true');
-        this.setState({ shouldShowIntro: true });
+        this.setState({ shouldShowIntro: SHOULD_SHOW_INTRO_VALUES.true });
+      } else {
+        this.setState({ shouldShowIntro: SHOULD_SHOW_INTRO_VALUES.false });
       }
     });
 
     Airship.channel.getChannelId().then((channelId) => {
       console.log(`channel ID: ${channelId}`);
-    })
+    });
 
     // by default, custom entry and custom exit events are enabled, and region events are disabled
     // GimbalAirshipAdapter.setShouldTrackCustomEntryEvents(true);
@@ -83,7 +92,9 @@ export default class AirshipSample extends Component<AppProps, AppState> {
   introContainerComponent() {
     return (
       <IntroContainer
-        onPageFinish={() => this.setState({ shouldShowIntro: false })}
+        onPageFinish={() =>
+          this.setState({ shouldShowIntro: SHOULD_SHOW_INTRO_VALUES.false })
+        }
       />
     );
   }
@@ -102,13 +113,23 @@ export default class AirshipSample extends Component<AppProps, AppState> {
     );
   }
 
+  currentView() {
+    if (this.state.shouldShowIntro === SHOULD_SHOW_INTRO_VALUES.unknown) {
+      return (
+        <View style={{ flex: 1 }}>
+          <Text style={GlobalStyles.header}>Loading...</Text>
+        </View>
+      );
+    } else if (this.state.shouldShowIntro === SHOULD_SHOW_INTRO_VALUES.true) {
+      return this.introContainerComponent();
+    } else {
+      return this.bodyContainerComponent();
+    }
+  }
+
   render() {
     return (
-      <View style={GlobalStyles.backgroundContainer}>
-        {this.state.shouldShowIntro
-          ? this.introContainerComponent()
-          : this.bodyContainerComponent()}
-      </View>
+      <View style={GlobalStyles.backgroundContainer}>{this.currentView()}</View>
     );
   }
 }
