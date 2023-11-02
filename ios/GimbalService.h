@@ -46,7 +46,7 @@
  *
  *@param apiKey Your Gimbal API Key
  */
--(void)setApiKey:(NSString *)apiKey;
+-(void)setApiKey:(NSString *_Nonnull)apiKey;
 
 /**
  * Associates a User Analytics Identifier with an application instance.  This may be used to
@@ -54,7 +54,7 @@
  *
  * @param id - the User Analytics Identifier
 */
--(void)setAnalyticsId:(NSString *)id;
+-(void)setAnalyticsId:(NSString * _Nonnull)id;
 
 /**
  * Starts the service.
