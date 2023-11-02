@@ -1,25 +1,24 @@
 PODS:
-  - Airship (16.11.3):
-    - Airship/Automation (= 16.11.3)
-    - Airship/Basement (= 16.11.3)
-    - Airship/Core (= 16.11.3)
-    - Airship/ExtendedActions (= 16.11.3)
-    - Airship/MessageCenter (= 16.11.3)
-  - Airship/Automation (16.11.3):
+  - Airship (17.3.1):
+    - Airship/Automation (= 17.3.1)
+    - Airship/Basement (= 17.3.1)
+    - Airship/Core (= 17.3.1)
+    - Airship/FeatureFlags (= 17.3.1)
+    - Airship/MessageCenter (= 17.3.1)
+    - Airship/PreferenceCenter (= 17.3.1)
+  - Airship/Automation (17.3.1):
     - Airship/Core
-  - Airship/Basement (16.11.3)
-  - Airship/Core (16.11.3):
+  - Airship/Basement (17.3.1)
+  - Airship/Core (17.3.1):
     - Airship/Basement
-  - Airship/ExtendedActions (16.11.3):
+  - Airship/FeatureFlags (17.3.1):
     - Airship/Core
-  - Airship/MessageCenter (16.11.3):
+  - Airship/MessageCenter (17.3.1):
     - Airship/Core
-  - Airship/PreferenceCenter (16.11.3):
+  - Airship/PreferenceCenter (17.3.1):
     - Airship/Core
-  - AirshipFrameworkProxy (2.0.3):
-    - Airship (= 16.11.3)
-    - Airship/MessageCenter (= 16.11.3)
-    - Airship/PreferenceCenter (= 16.11.3)
+  - AirshipFrameworkProxy (4.3.0):
+    - Airship (= 17.3.1)
   - boost (1.76.0)
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
@@ -93,9 +92,9 @@ PODS:
     - FlipperKit/Core
     - FlipperKit/FlipperKitNetworkPlugin
   - fmt (6.2.1)
-  - GimbalAirshipAdapter (2.3.0):
-    - Airship (~> 16.11.3)
-    - GimbalXCFramework (~> 2.93)
+  - GimbalAirshipAdapter (3.1.0):
+    - Airship (~> 17.3.1)
+    - GimbalXCFramework (~> 2.93.1)
   - GimbalXCFramework (2.93.1)
   - glog (0.3.5)
   - hermes-engine (0.71.6):
@@ -354,8 +353,8 @@ PODS:
   - React-jsinspector (0.71.6)
   - React-logger (0.71.6):
     - glog
-  - react-native-airship (15.2.1):
-    - AirshipFrameworkProxy (= 2.0.3)
+  - react-native-airship (16.1.1):
+    - AirshipFrameworkProxy (= 4.3.0)
     - React-Core
   - react-native-safe-area-context (0.7.3):
     - React
@@ -481,7 +480,7 @@ PODS:
   - RNScreens (2.18.1):
     - React-Core
   - rtn-gimbal-airship-adapter (1.3.0):
-    - GimbalAirshipAdapter (~> 2.3.0)
+    - GimbalAirshipAdapter (~> 3.1.0)
     - GimbalXCFramework
     - React-Core
   - SocketRocket (0.6.1)
@@ -670,8 +669,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Airship: c70eed50e429f97f5adb285423c7291fb7a032ae
-  AirshipFrameworkProxy: 79d040ee3392b1627cc585ab7d03e5cf30b8dd33
+  Airship: a8ec7140cca677696f10f605749c18248d818117
+  AirshipFrameworkProxy: 581e2ca4c3b2377724d0235117d617df8489097a
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
@@ -687,7 +686,7 @@ SPEC CHECKSUMS:
   Flipper-RSocket: d9d9ade67cbecf6ac10730304bf5607266dd2541
   FlipperKit: cbdee19bdd4e7f05472a66ce290f1b729ba3cb86
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
-  GimbalAirshipAdapter: d40517efc1c21e36d38877fc15322597ded52498
+  GimbalAirshipAdapter: 59efd0754be8c9449d1c7bf550b1179b3b35bb41
   GimbalXCFramework: b7d3fc0006b68095ea20df15524c479f1a0c65fb
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: b434cea529ad0152c56c7cb6486b0c4c0b23b5de
@@ -707,7 +706,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 7894956638ff3e00819dd3f9f6f4a84da38f2409
   React-jsinspector: d5ce2ef3eb8fd30c28389d0bc577918c70821bd6
   React-logger: 9332c3e7b4ef007a0211c0a9868253aac3e1da82
-  react-native-airship: 0125ea14d911eb432471766c58b725f91f6dc4fe
+  react-native-airship: a7222b49a0cfa0bdd9dc3981c15f808a9ae90740
   react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
   React-perflogger: 43392072a5b867a504e2b4857606f8fc5a403d7f
   React-RCTActionSheet: c7b67c125bebeda9fb19fc7b200d85cb9d6899c4
@@ -728,11 +727,11 @@ SPEC CHECKSUMS:
   RNPermissions: 55d79f5fed0955d9d063e956b976a0e432c55947
   RNReanimated: b1220a0e5168745283ff5d53bfc7d2144b2cee1b
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
-  rtn-gimbal-airship-adapter: 7a78321a824b3114fe79fba75a048b0a304a9141
+  rtn-gimbal-airship-adapter: 43494dfd14f9f7a255ba51372cc91c5d3c854c6c
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: ba09b6b11e6139e3df8229238aa794205ca6a02a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 1b9c1c0d13926e58571cde216dbaf7e46a84cbcc
+PODFILE CHECKSUM: 294847eceb39557531d59daf901d9661fe1589c8
 
 COCOAPODS: 1.12.1
