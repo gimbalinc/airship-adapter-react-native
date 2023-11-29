@@ -11,15 +11,17 @@ const SetConsentToggle = () => {
   const [placesConsent, setPlacesConsent] = useState(ConsentState.Unknown);
 
   useEffect(() => {
-    if (!GimbalAirshipAdapter.isStarted) {
-      return;
-    }
-
-    GimbalAirshipAdapter.getUserConsent(ConsentType.Places).then(
-      (consentState) => {
-        setPlacesConsent(consentState);
+    (async () => {
+      const isAdapterEnabled = await GimbalAirshipAdapter.isStarted();
+      if (!isAdapterEnabled) {
+        return;
       }
-    );
+
+      const consentState = await GimbalAirshipAdapter.getUserConsent(
+        ConsentType.Places
+      );
+      setPlacesConsent(consentState);
+    })();
   }, [placesConsent]);
 
   const handleConsentToggle = (enabled: boolean) => {

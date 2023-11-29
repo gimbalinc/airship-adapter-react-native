@@ -225,6 +225,15 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
   },
 
   /**
+   * Associates a User Analytics Identifier with an application instance.  This may be used to enrich exported analytics events from Gimbal Manager.
+   *
+   * @param id - the User Analytics Identifier
+   */
+  setAnalyticsId(id: string): void {
+    GimbalAirshipAdapterModule.setAnalyticsId(id);
+  },
+
+  /**
    * Adds a listener for an Airship Gimbal event.
    *
    * @param eventType The event type. Either regionEnter or regionExit.
