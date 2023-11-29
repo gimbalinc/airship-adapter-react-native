@@ -6,6 +6,7 @@
 - Ensure that your Airship credentials are supplied in `airshipconfig.properties` for Android, `AirshipConfig.plist` for iOS.
 - Ensure your dependencies are installed by running `yarn`. If there are any Cocoapods or other dependency-related errors, resolve these first.
 - Ensure that the correct package name is present in `package.json` in the `android` script
+- If you'd like to set a User Analytics Identifier, see the relevant code in `App.tsx`
 
 ## Running the App
 ### iOS

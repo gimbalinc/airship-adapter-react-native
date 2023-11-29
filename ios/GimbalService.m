@@ -104,7 +104,7 @@ static id _sharedObject = nil;
 }
 
 -(void)setAnalyticsId:(NSString *)id {
-    [[GMBLAnalyticsManager sharedInstance] setUserAnalyticsID:id];
+    [AirshipAdapter.shared setWithUserAnalyticsId:id];
 }
 
 // MARK: misc
