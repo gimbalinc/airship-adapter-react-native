@@ -1608,10 +1608,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@ua/react-native-airship@17.2.0":
-  version "17.2.0"
-  resolved "https://registry.yarnpkg.com/@ua/react-native-airship/-/react-native-airship-17.2.0.tgz#04aa44d0a4680822824ff90c8068bf0bb26f4a69"
-  integrity sha512-HyTXGR569Jlfeau5lcSL6OfqnKfFVMVLyGalvmWdNohDWFQWcgH2V5iGFuHL7f1rO72lW1Kjq27mQ+h0Z5B2vA==
+"@ua/react-native-airship@18.0.2":
+  version "18.0.2"
+  resolved "https://registry.yarnpkg.com/@ua/react-native-airship/-/react-native-airship-18.0.2.tgz#d1c56004cf1de8e9c26862fd0d54059e2a357f2a"
+  integrity sha512-WuxQZTmMlO7VzvDvrq+E+TojZV7NHO1E1n9uQhgtF3sAglH5QGxwRjTBjN1Jche4awk3lizEk5iGbLloDK9FLg==
 
 abort-controller@^3.0.0:
   version "3.0.0"

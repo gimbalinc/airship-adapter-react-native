@@ -1,24 +1,24 @@
 PODS:
-  - Airship (17.7.3):
-    - Airship/Automation (= 17.7.3)
-    - Airship/Basement (= 17.7.3)
-    - Airship/Core (= 17.7.3)
-    - Airship/FeatureFlags (= 17.7.3)
-    - Airship/MessageCenter (= 17.7.3)
-    - Airship/PreferenceCenter (= 17.7.3)
-  - Airship/Automation (17.7.3):
+  - Airship (18.2.0):
+    - Airship/Automation (= 18.2.0)
+    - Airship/Basement (= 18.2.0)
+    - Airship/Core (= 18.2.0)
+    - Airship/FeatureFlags (= 18.2.0)
+    - Airship/MessageCenter (= 18.2.0)
+    - Airship/PreferenceCenter (= 18.2.0)
+  - Airship/Automation (18.2.0):
     - Airship/Core
-  - Airship/Basement (17.7.3)
-  - Airship/Core (17.7.3):
+  - Airship/Basement (18.2.0)
+  - Airship/Core (18.2.0):
     - Airship/Basement
-  - Airship/FeatureFlags (17.7.3):
+  - Airship/FeatureFlags (18.2.0):
     - Airship/Core
-  - Airship/MessageCenter (17.7.3):
+  - Airship/MessageCenter (18.2.0):
     - Airship/Core
-  - Airship/PreferenceCenter (17.7.3):
+  - Airship/PreferenceCenter (18.2.0):
     - Airship/Core
-  - AirshipFrameworkProxy (5.1.1):
-    - Airship (= 17.7.3)
+  - AirshipFrameworkProxy (6.2.0):
+    - Airship (= 18.2.0)
   - boost (1.76.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.71.6)
@@ -30,8 +30,8 @@ PODS:
     - React-jsi (= 0.71.6)
     - ReactCommon/turbomodule/core (= 0.71.6)
   - fmt (6.2.1)
-  - GimbalAirshipAdapter (3.3.0):
-    - Airship (~> 17.7.3)
+  - GimbalAirshipAdapter (4.0.0):
+    - Airship (~> 18.2.0)
     - GimbalXCFramework (~> 2.94.0)
   - GimbalXCFramework (2.94.0)
   - glog (0.3.5)
@@ -290,8 +290,8 @@ PODS:
   - React-jsinspector (0.71.6)
   - React-logger (0.71.6):
     - glog
-  - react-native-airship (17.2.0):
-    - AirshipFrameworkProxy (= 5.1.1)
+  - react-native-airship (18.0.2):
+    - AirshipFrameworkProxy (= 6.2.0)
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - react-native-safe-area-context (0.7.3):
@@ -417,8 +417,8 @@ PODS:
     - Yoga
   - RNScreens (2.18.1):
     - React-Core
-  - rtn-gimbal-airship-adapter (1.3.0):
-    - GimbalAirshipAdapter (~> 3.3.0)
+  - rtn-gimbal-airship-adapter (1.4.0):
+    - GimbalAirshipAdapter (~> 4.0.0)
     - GimbalXCFramework (~> 2.94.0)
     - React-Core
   - Yoga (1.14.0)
@@ -568,14 +568,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Airship: 5a6d3f8a982398940b0d48423bb9b8736717c123
-  AirshipFrameworkProxy: 7255f4ed9836dc2920f2f1ea5657ced4cee8a35c
+  Airship: 267a2a901ca3242f0efcd5b1ba6f10171f924912
+  AirshipFrameworkProxy: 55c75d5365cbad8933aa730af703eba9c53834d1
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: a83ceaa8a8581003a623facdb3c44f6d4f342ac5
   FBReactNativeSpec: 85eee79837cb797ab6176f0243a2b40511c09158
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
-  GimbalAirshipAdapter: ccc37524ce994330f57d596e199268629bddef98
+  GimbalAirshipAdapter: 89637c055e43fcc86b0acaf3736f563cecb33c9b
   GimbalXCFramework: 8e0d3f29ccd1146f29e441ee3b45396026b4176a
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: b434cea529ad0152c56c7cb6486b0c4c0b23b5de
@@ -594,7 +594,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 7894956638ff3e00819dd3f9f6f4a84da38f2409
   React-jsinspector: d5ce2ef3eb8fd30c28389d0bc577918c70821bd6
   React-logger: 9332c3e7b4ef007a0211c0a9868253aac3e1da82
-  react-native-airship: 0e91d5e0b7a25231ac0412ab5a51a5eb9f9d0b92
+  react-native-airship: eec5c554004f747cd1dd85f0da364b06f696a8e6
   react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
   React-perflogger: 43392072a5b867a504e2b4857606f8fc5a403d7f
   React-RCTActionSheet: c7b67c125bebeda9fb19fc7b200d85cb9d6899c4
@@ -615,7 +615,7 @@ SPEC CHECKSUMS:
   RNPermissions: ce5dae3e5812f7207e4ed2dbdd6de3948e69a023
   RNReanimated: b1220a0e5168745283ff5d53bfc7d2144b2cee1b
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
-  rtn-gimbal-airship-adapter: a02770c383cead5e7ce912c072198b04413de721
+  rtn-gimbal-airship-adapter: ea9cc320b8182aadacbd2b6d2ce7ced1d7c6c96b
   Yoga: ba09b6b11e6139e3df8229238aa794205ca6a02a
 
 PODFILE CHECKSUM: 294847eceb39557531d59daf901d9661fe1589c8
