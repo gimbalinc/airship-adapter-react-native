@@ -1,4 +1,4 @@
-package com.rtngimbalairshipadapterexample;
+package com.gimbal.airship.reactnative.android;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

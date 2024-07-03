@@ -17,8 +17,8 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m,mm}"
 
   s.dependency "React-Core"
-  s.dependency "GimbalXCFramework"
-  s.dependency "GimbalAirshipAdapter", "~> 3.1.0"
+  s.dependency "GimbalXCFramework", "~> 2.94.0"
+  s.dependency "GimbalAirshipAdapter", "~> 4.0.0"
 
   # Don't install the dependencies when we run `pod install` in the old architecture.
   if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
