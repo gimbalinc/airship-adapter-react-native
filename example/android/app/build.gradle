@@ -93,7 +93,7 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.rtngimbalairshipadapterexample"
+    namespace "com.gimbal.airship.reactnative.android"
     defaultConfig {
         applicationId "com.gimbal.airship.reactnative.android"
         minSdkVersion rootProject.ext.minSdkVersion
