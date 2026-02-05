@@ -1,17 +1,19 @@
 package com.rtngimbalairshipadapter;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.facebook.react.BaseReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.module.model.ReactModuleInfo;
 import com.facebook.react.module.model.ReactModuleInfoProvider;
-import com.facebook.react.TurboReactPackage;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class RtnGimbalAirshipAdapterPackage extends TurboReactPackage {
+
+public class RtnGimbalAirshipAdapterPackage extends BaseReactPackage {
 
   @Nullable
   @Override
@@ -23,11 +25,11 @@ public class RtnGimbalAirshipAdapterPackage extends TurboReactPackage {
     }
   }
 
+  @NonNull
   @Override
   public ReactModuleInfoProvider getReactModuleInfoProvider() {
     return () -> {
       final Map<String, ReactModuleInfo> moduleInfos = new HashMap<>();
-      boolean isTurboModule = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
       moduleInfos.put(
               RtnGimbalAirshipAdapterModule.NAME,
               new ReactModuleInfo(
@@ -37,7 +39,7 @@ public class RtnGimbalAirshipAdapterPackage extends TurboReactPackage {
                       true, // needsEagerInit
                       false, // hasConstants
                       false, // isCxxModule
-                      isTurboModule // isTurboModule
+                      true // isTurboModule
       ));
       return moduleInfos;
     };

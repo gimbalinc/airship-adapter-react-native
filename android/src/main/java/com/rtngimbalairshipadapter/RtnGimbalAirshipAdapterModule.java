@@ -110,8 +110,13 @@ public class RtnGimbalAirshipAdapterModule extends RtnGimbalAirshipAdapterSpec {
   }
 
   @ReactMethod
-  public void removeListeners(Integer count) {
+  public void removeListeners(double count) {
     // Keep: Required for RN built in Event Emitter Calls.
+  }
+
+  @ReactMethod
+  public void setGimbalApiKey(String gimbalApiKey) {
+    Gimbal.setApiKey((Application) getReactApplicationContext().getApplicationContext(), gimbalApiKey);
   }
 
   @ReactMethod
@@ -119,10 +124,6 @@ public class RtnGimbalAirshipAdapterModule extends RtnGimbalAirshipAdapterSpec {
     promise.resolve(airshipAdapter().isStarted());
   }
 
-  @ReactMethod
-  public void setApiKey(String apiKey) {
-    Gimbal.setApiKey((Application) getReactApplicationContext().getApplicationContext(), apiKey);
-  }
 
   @ReactMethod
   public void start(String apiKey, Promise promise) {
