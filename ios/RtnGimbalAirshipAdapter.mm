@@ -43,20 +43,20 @@ RCT_EXPORT_METHOD(addListener:(NSString *)eventName) {
     [[AdapterEventEmitter shared] addListener:eventName];
 }
 
-RCT_EXPORT_METHOD(removeListeners:(NSInteger)count) {
+RCT_EXPORT_METHOD(removeListeners:(double)count) {
     [[AdapterEventEmitter shared] removeListeners:count];
 }
 
-RCT_EXPORT_METHOD(setApiKey:(NSString *)apiKey) {
-    
+RCT_REMAP_METHOD(setGimbalApiKey,
+                 setGimbalApiKey:(NSString *)gimbalApiKey) {
+
 }
 
 RCT_REMAP_METHOD(start,
-                 apiKey:(NSString *)apiKey
-                 start_resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
-
-    [[GimbalService shared] start:apiKey];
+                 start:(NSString *)gimbalApiKey
+                 resolve:(RCTPromiseResolveBlock)resolve
+                 reject:(RCTPromiseRejectBlock)reject) {
+    [[GimbalService shared] start:gimbalApiKey];
     resolve(@([[GimbalService shared] isStarted]));
 }
 
@@ -65,28 +65,30 @@ RCT_EXPORT_METHOD(stop) {
 }
 
 RCT_REMAP_METHOD(isStarted,
-                 isStarted_resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
+                 isStarted:(RCTPromiseResolveBlock)resolve
+                 reject:(RCTPromiseRejectBlock)reject) {
     resolve(@([GimbalService shared].isStarted));
 }
 
 RCT_REMAP_METHOD(getGdprConsentRequirement,
-                 getGdprConsentRequirement_resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
+                 getGdprConsentRequirement:(RCTPromiseResolveBlock)resolve
+                 reject:(RCTPromiseRejectBlock)reject) {
     GDPRConsentRequirement requirement = [GMBLPrivacyManager gdprConsentRequirement];
     resolve([self convertConsentRequirement:requirement]);
 }
 
 RCT_REMAP_METHOD(getUserConsent,
-                 getUserConsent_type:(NSString *)type
-                 getUserConsent_resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
+                 getUserConsent:(NSString *)type
+                 resolve:(RCTPromiseResolveBlock)resolve
+                 reject:(RCTPromiseRejectBlock)reject) {
     GMBLConsentState state = [GMBLPrivacyManager userConsentFor:[self convertConsentTypeString:type]];
 
     resolve([self convertConsentState:state]);
 }
 
-RCT_EXPORT_METHOD(setUserConsent:(NSString *)type state:(NSString *)state) {
+RCT_REMAP_METHOD(setUserConsent,
+                 setUserConsent:(NSString *)type
+                 state:(NSString *)state) {
     [GMBLPrivacyManager setUserConsentFor:[self convertConsentTypeString:type]
                                   toState:[self convertConsentStateString:state]];
 }
@@ -168,9 +170,9 @@ RCT_EXPORT_METHOD(setAnalyticsId:(NSString *)id) {
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
-    (const facebook::react::ObjCTurboModule::InitParams &)params
+(const facebook::react::ObjCTurboModule::InitParams &)params
 {
-    return std::make_shared<facebook::react::NativeRtnGimbalAirshipAdapterSpecJSI>(params);
+    return std::make_shared<facebook::react::NativeGimbalAirshipAdapterModuleSpecJSI>(params);
 }
 #endif
 
