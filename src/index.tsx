@@ -1,8 +1,36 @@
 import { EmitterSubscription, NativeModules } from 'react-native';
 import EventEmitter from './EventEmitter';
 
-// @ts-expect-error
-const isTurboModuleEnabled = global.__turboModuleProxy != null;
+import type { Spec as NativeModuleSpec } from './NativeGimbalAirshipAdapterModule';
+
+let cachedNativeModule: NativeModuleSpec | null = null;
+
+/**
+ * Resolve the native module lazily so that in bridgeless/New Architecture
+ * we use the TurboModule after __turboModuleProxy has been set by the runtime.
+ */
+function getNativeModule(): NativeModuleSpec {
+  if (cachedNativeModule != null) {
+    return cachedNativeModule;
+  }
+  // @ts-expect-error
+  if (global.__turboModuleProxy != null) {
+    const mod = require('./NativeGimbalAirshipAdapterModule').default;
+    if (mod != null) {
+      cachedNativeModule = mod;
+      return cachedNativeModule!;
+    }
+  }
+  const legacy = NativeModules.RtnGimbalAirshipAdapter;
+  if (legacy != null) {
+    cachedNativeModule = legacy;
+    return cachedNativeModule!;
+  }
+  throw new Error(
+    'RtnGimbalAirshipAdapter native module is not available. ' +
+      'Ensure the app has fully initialized (e.g. call adapter methods after componentDidMount) and that the native module is linked.'
+  );
+}
 
 export enum RegionEventType {
   /**
@@ -127,9 +155,6 @@ function convertEventEnum(eventType: RegionEventType): string {
   }
   throw new Error('Invalid event type: ' + eventType);
 }
-const GimbalAirshipAdapterModule = isTurboModuleEnabled
-  ? require('./NativeGimbalAirshipAdapterModule').default
-  : NativeModules.RtnGimbalAirshipAdapter;
 
 const eventEmitter = new EventEmitter();
 
@@ -146,7 +171,7 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
    * @param apiKey The Gimbal API key
    */
   setApiKey(apiKey: string): void {
-    return GimbalAirshipAdapterModule.setApiKey(apiKey);
+    return getNativeModule().setApiKey(apiKey);
   },
 
   /**
@@ -156,14 +181,14 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
    * or not.
    */
   start(apiKey: string): Promise<boolean> {
-    return GimbalAirshipAdapterModule.start(apiKey);
+    return getNativeModule().start(apiKey);
   },
 
   /**
    * Stops the Gimbal Adapter.
    */
   stop() {
-    GimbalAirshipAdapterModule.stop();
+    getNativeModule().stop();
   },
 
   /**
@@ -171,7 +196,7 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
    * @return A promise with the result.
    */
   isStarted(): Promise<boolean> {
-    return GimbalAirshipAdapterModule.isStarted();
+    return getNativeModule().isStarted();
   },
 
   /**
@@ -179,7 +204,7 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
    * @return A promise with the result.
    */
   getGdprConsentRequirement(): Promise<ConsentRequirement> {
-    return GimbalAirshipAdapterModule.getGdprConsentRequirement();
+    return getNativeModule().getGdprConsentRequirement() as Promise<ConsentRequirement>;
   },
 
   /**
@@ -188,7 +213,7 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
    * @param consentState The consent state.
    */
   setUserConsent(consentType: ConsentType, consentState: ConsentState) {
-    GimbalAirshipAdapterModule.setUserConsent(consentType, consentState);
+    getNativeModule().setUserConsent(consentType, consentState);
   },
 
   /**
@@ -197,7 +222,9 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
    * @return A promise with the result.
    */
   getUserConsent(consentType: ConsentType): Promise<ConsentState> {
-    return GimbalAirshipAdapterModule.getUserConsent(consentType);
+    return getNativeModule().getUserConsent(
+      consentType
+    ) as Promise<ConsentState>;
   },
 
   /**
@@ -205,7 +232,7 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
    * by default.
    */
   setShouldTrackCustomEntryEvents(shouldTrack: boolean): void {
-    GimbalAirshipAdapterModule.setShouldTrackCustomEntryEvents(shouldTrack);
+    getNativeModule().setShouldTrackCustomEntryEvents(shouldTrack);
   },
 
   /**
@@ -213,7 +240,7 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
    * by default.
    */
   setShouldTrackCustomExitEvents(shouldTrack: boolean): void {
-    GimbalAirshipAdapterModule.setShouldTrackCustomExitEvents(shouldTrack);
+    getNativeModule().setShouldTrackCustomExitEvents(shouldTrack);
   },
 
   /**
@@ -221,7 +248,7 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
    * is disabled by default, since RegionEvents are deprecated in favor of CustomEvents.
    */
   setShouldTrackRegionEvents(shouldTrack: boolean): void {
-    GimbalAirshipAdapterModule.setShouldTrackRegionEvents(shouldTrack);
+    getNativeModule().setShouldTrackRegionEvents(shouldTrack);
   },
 
   /**
@@ -230,7 +257,7 @@ export const GimbalAirshipAdapter: GimbalAirshipAdapterSpec = {
    * @param id - the User Analytics Identifier
    */
   setAnalyticsId(id: string): void {
-    GimbalAirshipAdapterModule.setAnalyticsId(id);
+    getNativeModule().setAnalyticsId(id);
   },
 
   /**

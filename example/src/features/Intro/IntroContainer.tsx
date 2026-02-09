@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Platform, View, Linking } from 'react-native';
-import type { Int32 } from 'react-native/Libraries/Types/CodegenTypes';
 import {
   request,
   PERMISSIONS,
@@ -16,7 +15,7 @@ interface IntroContainerProps {
 }
 
 interface IntroContainerState {
-  currentIndex: Int32;
+  currentIndex: number;
 }
 
 const PAGE_MAX_INDEX = 3;
@@ -48,7 +47,7 @@ export default class IntroContainer extends Component<
     }
   }
 
-  pageForIndex(index: Int32) {
+  pageForIndex(index: number) {
     switch (index) {
       case 0: // Notification Permissions request page
         return (
@@ -141,7 +140,9 @@ export default class IntroContainer extends Component<
 
   requestBluetoothPermissions(platform: string): Promise<PermissionStatus> {
     if (platform === 'ios') {
-      return request(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL);
+      // iOS 13+ doesn't require runtime Bluetooth permission
+      // Only needs Info.plist description
+      return Promise.resolve('granted' as PermissionStatus);
     } else {
       return request(PERMISSIONS.ANDROID.BLUETOOTH_SCAN);
     }

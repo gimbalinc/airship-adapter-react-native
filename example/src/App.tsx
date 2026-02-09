@@ -70,9 +70,14 @@ export default class AirshipSample extends Component<AppProps, AppState> {
       }
     });
 
-    Airship.channel.getChannelId().then((channelId) => {
-      console.log(`channel ID: ${channelId}`);
-    });
+    Airship.channel
+      .getChannelId()
+      .then((channelId) => {
+        console.log(`channel ID: ${channelId}`);
+      })
+      .catch((error) => {
+        console.error('Failed to get Airship channel ID:', error);
+      });
 
     // by default, custom entry and custom exit events are enabled, and region events are disabled
     // GimbalAirshipAdapter.setShouldTrackCustomEntryEvents(true);

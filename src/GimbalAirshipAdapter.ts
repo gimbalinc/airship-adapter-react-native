@@ -85,7 +85,7 @@ export interface Spec {
    * enrich exported analytics events from Gimbal Manager.
    *
    * @param id - the User Analytics Identifier
-  */
+   */
   setAnalyticsId(id: string): void;
 
   /**
