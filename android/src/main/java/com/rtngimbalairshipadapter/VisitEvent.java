@@ -5,7 +5,10 @@ import androidx.annotation.NonNull;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableMap;
 import com.gimbal.android.Visit;
-import com.urbanairship.util.DateUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class VisitEvent implements Event {
   private static final String EXIT_EVENT_NAME = "com.urbanairship.gimbal.region_exit";
@@ -50,11 +53,11 @@ public class VisitEvent implements Event {
     WritableMap visitMap = Arguments.createMap();
 
     if (visit.getArrivalTimeInMillis() > 0) {
-      visitMap.putString(VISIT_ARRIVAL_TIME_KEY, DateUtils.createIso8601TimeStamp(visit.getArrivalTimeInMillis()));
+      visitMap.putString(VISIT_ARRIVAL_TIME_KEY, formatTimestamp(visit.getArrivalTimeInMillis()));
     }
 
     if (visit.getDepartureTimeInMillis() > 0) {
-      visitMap.putString(VISIT_DEPARTURE_TIME_KEY, DateUtils.createIso8601TimeStamp(visit.getDepartureTimeInMillis()));
+      visitMap.putString(VISIT_DEPARTURE_TIME_KEY, formatTimestamp(visit.getDepartureTimeInMillis()));
     }
 
     visitMap.putDouble(VISIT_DWELL_TIME_KEY, visit.getDwellTimeInMillis() / 1000.0);
@@ -79,5 +82,9 @@ public class VisitEvent implements Event {
     }
 
     return visitMap;
+  }
+
+  private String formatTimestamp(long millis) {
+    return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US).format(new Date(millis));
   }
 }

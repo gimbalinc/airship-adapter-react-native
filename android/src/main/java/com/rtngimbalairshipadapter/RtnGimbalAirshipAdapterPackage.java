@@ -1,43 +1,45 @@
 package com.rtngimbalairshipadapter;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.facebook.react.BaseReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.module.model.ReactModuleInfo;
 import com.facebook.react.module.model.ReactModuleInfoProvider;
-import com.facebook.react.TurboReactPackage;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class RtnGimbalAirshipAdapterPackage extends TurboReactPackage {
+
+public class RtnGimbalAirshipAdapterPackage extends BaseReactPackage {
 
   @Nullable
   @Override
   public NativeModule getModule(String name, ReactApplicationContext reactContext) {
-    if (name.equals(RtnGimbalAirshipAdapterModule.NAME)) {
+    if (name.equals(RtnGimbalAirshipAdapterSpec.NAME)) {
       return new RtnGimbalAirshipAdapterModule(reactContext);
     } else {
       return null;
     }
   }
 
+  @NonNull
   @Override
   public ReactModuleInfoProvider getReactModuleInfoProvider() {
     return () -> {
       final Map<String, ReactModuleInfo> moduleInfos = new HashMap<>();
-      boolean isTurboModule = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
       moduleInfos.put(
-              RtnGimbalAirshipAdapterModule.NAME,
+              RtnGimbalAirshipAdapterSpec.NAME,
               new ReactModuleInfo(
-                      RtnGimbalAirshipAdapterModule.NAME,
-                      RtnGimbalAirshipAdapterModule.NAME,
+                      RtnGimbalAirshipAdapterSpec.NAME,
+                      RtnGimbalAirshipAdapterSpec.NAME,
                       false, // canOverrideExistingModule
                       true, // needsEagerInit
                       false, // hasConstants
                       false, // isCxxModule
-                      isTurboModule // isTurboModule
+                      true // isTurboModule
       ));
       return moduleInfos;
     };

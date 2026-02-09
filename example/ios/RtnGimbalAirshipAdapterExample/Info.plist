@@ -45,6 +45,15 @@
 	<string>Let this sample app trigger Gimbal location-based events</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Let this sample app trigger Gimbal location-based events while the app is in use</string>
+	<key>RCTNewArchEnabled</key>
+	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>BrandonText-Bold.otf</string>
+		<string>BrandonText-Light.otf</string>
+		<string>BrandonText-Medium.otf</string>
+		<string>BrandonText-Regular.otf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -66,12 +75,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>BrandonText-Bold.otf</string>
-		<string>BrandonText-Light.otf</string>
-		<string>BrandonText-Medium.otf</string>
-		<string>BrandonText-Regular.otf</string>
-	</array>
 </dict>
 </plist>

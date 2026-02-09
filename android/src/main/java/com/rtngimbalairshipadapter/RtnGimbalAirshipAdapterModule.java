@@ -19,7 +19,6 @@ import com.urbanairship.analytics.location.RegionEvent;
 
 
 public class RtnGimbalAirshipAdapterModule extends RtnGimbalAirshipAdapterSpec {
-  public static final String NAME = "RtnGimbalAirshipAdapter";
 
   private static final String PREFERENCE_FILE_KEY =
     "com.gimbal.rtn.react.native.airship.adapter.android.preference.key";
@@ -35,12 +34,6 @@ public class RtnGimbalAirshipAdapterModule extends RtnGimbalAirshipAdapterSpec {
   RtnGimbalAirshipAdapterModule(ReactApplicationContext context) {
     super(context);
     preferences = context.getSharedPreferences(PREFERENCE_FILE_KEY, Context.MODE_PRIVATE);
-  }
-
-  @Override
-  @NonNull
-  public String getName() {
-    return NAME;
   }
 
   @Override
@@ -100,8 +93,8 @@ public class RtnGimbalAirshipAdapterModule extends RtnGimbalAirshipAdapterSpec {
    * @param count The count of listeners.
    */
   @ReactMethod
-  public void removeAndroidListeners(int count) {
-    EventEmitter.shared().removeAndroidListeners(count);
+  public void removeAndroidListeners(double count) {
+    EventEmitter.shared().removeAndroidListeners((int) count);
   }
 
   @ReactMethod
@@ -110,8 +103,13 @@ public class RtnGimbalAirshipAdapterModule extends RtnGimbalAirshipAdapterSpec {
   }
 
   @ReactMethod
-  public void removeListeners(Integer count) {
+  public void removeListeners(double count) {
     // Keep: Required for RN built in Event Emitter Calls.
+  }
+
+  @ReactMethod
+  public void setApiKey(String gimbalApiKey) {
+    Gimbal.setApiKey((Application) getReactApplicationContext().getApplicationContext(), gimbalApiKey);
   }
 
   @ReactMethod
@@ -119,10 +117,6 @@ public class RtnGimbalAirshipAdapterModule extends RtnGimbalAirshipAdapterSpec {
     promise.resolve(airshipAdapter().isStarted());
   }
 
-  @ReactMethod
-  public void setApiKey(String apiKey) {
-    Gimbal.setApiKey((Application) getReactApplicationContext().getApplicationContext(), apiKey);
-  }
 
   @ReactMethod
   public void start(String apiKey, Promise promise) {
