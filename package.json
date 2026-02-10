@@ -41,7 +41,10 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/gimbalinc/rtn-gimbal-airship-adapter",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gimbalinc/rtn-gimbal-airship-adapter.git"
+  },
   "author": "Andrew Tran <andrew.tran@infillion.com> (https://github.com/gimbalinc)",
   "license": "MIT",
   "bugs": {
